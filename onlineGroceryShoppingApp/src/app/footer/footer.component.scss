@@ -1,0 +1,56 @@
+.comp_details{
+    font-size: small;
+
+    // border: 1px solid black;
+    width: max-content;
+    height: max-content;
+    margin-right: auto;
+    margin-left: auto;
+    border-top: 1px solid grey;
+
+}
+.comp_details .lg{
+   margin-top: 10%;
+    height: 30px;
+    width: max-content;
+
+
+}
+.info{
+    display: flex;
+    flex-direction: row;
+    margin-left: 2%;
+    margin-top: 1%;
+}
+.info img{
+    color: green;
+}
+.info .field_name{
+    margin-left: 2%;
+    color: rgb(47, 131, 47);
+    font-weight: 400;
+}
+// sub footer
+
+.sub_footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: max-content;
+    font-size: small;
+    border-top:1px solid GREY ;
+    padding-top:5% ;
+}
+.trad_mark{
+    width: max-content;
+    margin-left: -8%;
+}
+.social_icons{
+    width: max-content;
+   margin-right: 5px;
+
+}
+.social_icons img{
+    margin: 5px;
+}

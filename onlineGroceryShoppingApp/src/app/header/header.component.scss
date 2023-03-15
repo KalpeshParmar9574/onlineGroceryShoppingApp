@@ -1,0 +1,44 @@
+._nav_ds_item{
+    width: max-content;
+   border: none;
+    margin-left:11%;
+    height: 25px;
+    padding: 2px;
+}
+._dropdown_btn{
+    padding: 0;
+    height: 100%;
+    background:white;
+    color:black;
+    border-right: 1px solid grey;
+    border-radius: 0;
+    width: 100px;
+    font-size: small;
+    margin-left: 0;
+    margin-bottom: 8px;
+}
+input{
+    width: 200px;
+   border-radius: 0;
+    font-size:12px ;
+    height: 100%;
+}
+.logo{
+ padding-bottom: 5px;
+
+}
+.btn_search{
+border-radius: 0;
+ padding: 0;
+ height: 100%;
+ width: 40px;
+}
+.cart_btn{
+    height: 40px;
+    padding: 0;
+    margin: 0;
+    border: 1px black solid;
+}
+.cart_dropdown{
+    height: 10px;
+}
