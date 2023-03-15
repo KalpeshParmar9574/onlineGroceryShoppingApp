@@ -1,44 +1,29 @@
-._nav_ds_item{
-    width: max-content;
-   border: none;
-    margin-left:11%;
-    height: 25px;
-    padding: 2px;
+ul, input, button{
+    font-size: 12px;
 }
-._dropdown_btn{
-    padding: 0;
-    height: 100%;
-    background:white;
-    color:black;
-    border-right: 1px solid grey;
+input,button{
     border-radius: 0;
-    width: 100px;
-    font-size: small;
-    margin-left: 0;
-    margin-bottom: 8px;
 }
 input{
-    width: 200px;
-   border-radius: 0;
-    font-size:12px ;
-    height: 100%;
-}
-.logo{
- padding-bottom: 5px;
+    border: none;
+    border-left: 1px solid grey;
+    width: auto;
 
+;
 }
-.btn_search{
-border-radius: 0;
- padding: 0;
- height: 100%;
- width: 40px;
+.nav{
+    height: 50px;
+    border-bottom: 1px solid grey;
 }
-.cart_btn{
-    height: 40px;
+//subnav css
+.catagory{
     padding: 0;
-    margin: 0;
-    border: 1px black solid;
+    color: white;
+    border-radius: 5px;
+    font-size: 12px;
+    
 }
-.cart_dropdown{
-    height: 10px;
+span,p,img{
+    margin: 0;
+    padding: 0;
 }
