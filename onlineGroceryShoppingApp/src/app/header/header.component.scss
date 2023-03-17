@@ -8,11 +8,12 @@ input{
     border: none;
     border-left: 1px solid grey;
     width: auto;
+    width: 15rem;
 
 ;
 }
 .nav{
-    height: 50px;
+    height: 4rem;
     border-bottom: 1px solid grey;
 }
 //subnav css
@@ -21,9 +22,21 @@ input{
     color: white;
     border-radius: 5px;
     font-size: 12px;
+    height: max-content;
     
 }
+
 span,p,img{
     margin: 0;
     padding: 0;
+}
+#contact_no{
+    color:  green;
+    margin-right: 2px;
+}
+@media screen  and (max-width:560px){
+
+    #logo{
+        width: 100px;
+    }
 }

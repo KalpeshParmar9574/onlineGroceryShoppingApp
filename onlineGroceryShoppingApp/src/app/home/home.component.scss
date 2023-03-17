@@ -1,15 +1,110 @@
-.exp_catagory{
-    font-size: 14px;
+// categories div css 
+
+.container {
+    margin-top: 2%;
+    padding: 0;
+
+    .nav {
+        margin-left: 20%;
+    }
+
+    #nav_tabs {
+        height: max-content;
+        width: 60%;
+        margin: 0;
+        padding: 0;
+        // border: 1px solid black;
+    }
+
+    #title {
+
+        width: 40%;
+        height: fit-content;
+        // border: 1px solid black;
+    }
+
+    ul {
+
+        height: 100%;
+
+    }
+
+    // cards container css
+    .card_container {
+        display: flex;
+        flex-shrink: inherit;
+        width: 100%;
+
+        padding: 5px;
+        justify-content: space-around;
+
+        .card {
+            background: #FEEFEA;
+
+            padding-bottom: 5px;
+            height: max-content;
+            text-align: center;
+            Width: 153px;
+            height: max-content;
+            border-radius: 5px;
+            Padding: 19px, 48px, 19px, 48px;
+            margin: 5px;
+
+            img {
+                width: 100%;
+
+            }
+
+            small {
+
+                width: 57px;
+                height: 18px;
+
+                font-family: 'Quicksand';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 18px;
+
+                /* identical to box height */
+
+
+                /* Grey */
+
+                color: #ADADAD;
+            }
+
+            #item_title {
+                width: 53px;
+                height: 23px;
+                text-align: center;
+                font-family: 'Quicksand';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 18px;
+               
+                line-height: 22px;
+                margin: 0;
+
+                /* identical to box height */
+
+
+                /* Black */
+
+                color: #253D4E;
+
+
+                /* Inside auto layout */
+
+            }
+        }
+    }
+
 }
 
-.exp_catagory_nav_item{
-    margin-left: 28%;
-}
-.exp_catagory .title{
-    font-weight:600 ;
+@media screen and (max-width:560px) {
 
-}
-.prod{
-   display: flex;
-   flex-direction: row;
+    #item_title {
+        font-size: 10px;
+    }
 }
