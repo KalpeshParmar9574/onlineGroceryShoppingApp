@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { AppRoutingModule } from 'src/app/app-routing.module';
 import { UsersRoutingModule } from './users-routing.module';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -15,7 +15,13 @@ import { RegistrationComponent } from './registration/registration.component';
   ],
   imports: [
     CommonModule,
-    UsersRoutingModule
+    AppRoutingModule
+
+  ],
+  exports: [
+    LoginComponent,
+    ProfileComponent,
+    RegistrationComponent
   ]
 })
 export class UsersModule { }

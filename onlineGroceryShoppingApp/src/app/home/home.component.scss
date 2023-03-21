@@ -31,8 +31,11 @@
 
     // cards container css
     .card_container {
+        // display: grid ;
+        // grid-template-columns:  repeat(4, 1fr);
+        // column-gap: 2px;
         display: flex;
-        flex-shrink: inherit;
+
         width: 100%;
 
         padding: 5px;
@@ -40,7 +43,8 @@
 
         .card {
             background: #FEEFEA;
-
+            flex-shrink: inherit;
+          
             padding-bottom: 5px;
             height: max-content;
             text-align: center;
@@ -75,7 +79,7 @@
             }
 
             #item_title {
-                width: 53px;
+                width: 100%;
                 height: 23px;
                 text-align: center;
                 font-family: 'Quicksand';
@@ -102,9 +106,55 @@
 
 }
 
-@media screen and (max-width:560px) {
+.feature_product_container{
 
-    #item_title {
+   }
+   
+
+.tranding_item_section_container{
+    margin-top: 8%;
+   
+
+}
+.tranding_items{
+    width: 450px;
+
+}
+.tranding_item_card{
+    width: 250px ;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.tranding_item_card_details{
+
+
+width: 50%;
+.tranding_item_card_title{
+    font-size:18px ;
+    font-weight: 600;
+    // fontfamily should be add
+}
+}
+
+.servces_section{
+    margin-top: 5%;
+    width: 100%;
+    .services_card{
+        margin-left: 5%;
+        margin-right: auto;
+        display: flex;
+        flex-direction: row;
+    }
+    .services_logo{
+        height:50%;
+        width: auto;
+        margin-right: 5px;
+    }
+}
+@media screen  and (max-width:560px){
+
+    #item_title{
         font-size: 10px;
     }
 }

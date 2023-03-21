@@ -32,11 +32,14 @@ span,p,img{
 }
 #contact_no{
     color:  green;
-    margin-right: 2px;
+    margin-right: 3px;
 }
 @media screen  and (max-width:560px){
 
     #logo{
         width: 100px;
+    }
+    .contact_div{
+        font: 10px;
     }
 }

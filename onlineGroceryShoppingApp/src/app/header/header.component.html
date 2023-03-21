@@ -11,9 +11,9 @@
       <ul class="navbar-nav  me-auto mt-2 mt-lg-0">
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true"
+          <a class="nav-link dropdown-toggle" href="#" id="catagory_links" data-bs-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">All Catagory</a>
-          <div class="dropdown-menu" aria-labelledby="dropdownId">
+          <div class="dropdown-menu" aria-labelledby="catagory_links">
             <a class="dropdown-item" href="#">Action 1</a>
             <a class="dropdown-item" href="#">Action 2</a>
           </div>
@@ -30,7 +30,7 @@
       <div class="cart mx-3">
         <div class="dropdown open">
          
-          <button class="btn dropdown-toggle" type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
+          <button class="btn dropdown-toggle" type="button" id="triggerId" data-bs-toggle="header_tabs" aria-haspopup="true"
               aria-expanded="false">
               <span> My cart</span>
                 <div class="d-flex">
@@ -46,39 +46,18 @@
       </div>
 
       <div class="user mx-3">
-        <div class="dropdown open">
-         
-          <button class="btn dropdown-toggle" type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">
-             kalpesh parmar
-              </button>
-          <div class="dropdown-menu" aria-labelledby="triggerId">
-            <button class="dropdown-item" href="#">Action</button>
-            <button class="dropdown-item disabled" href="#">Disabled action</button>
-          </div>
-        </div>
+       <button type="button" class="btn btn-outline-success rounded-2" (click)="navigate_login()">Login</button>
+       <button type="button" class="btn btn-outline-success rounded-2 mx-3" (click)="navigate_reg()">Register</button>
+       
+
+    
       </div>
 
     </div>
    
   </div>
   
-  <div class="d-flex my-3  justify-content-between">
-    <!-- catagory div -->
-    <div class="catagory bg-success d-flex mx-2 p-1 my-1">
-      <span><img src="../../assets/icon/grid (1).svg" alt=""></span>
-      <p class="mx-1">All categories</p>
-    </div>
-  
-    <!-- contact div -->
-    <div class="  d-flex mx-2 p-1">
-      <span ><img src="../../assets/icon/telephone.svg"  alt=""></span>
-      <p id="contact_no">1233-7777</p>
-      <p>24/7 support availaible</p>
-  
-    </div>
-  
-  </div>
+
 
 
 
@@ -87,3 +66,19 @@
 
 <!-- subnav -->
 
+<div class="d-flex my-3  justify-content-between">
+  <!-- catagory div -->
+  <div class="catagory bg-success d-flex mx-2 p-1 my-1">
+    <span><img src="../../assets/icon/grid (1).svg" alt=""></span>
+    <p class="mx-1">All categories</p>
+  </div>
+
+  <!-- contact div -->
+  <div class="  d-flex mx-2 p-1 contact_div">
+    <span ><img src="../../assets/icon/telephone.svg"  alt=""></span>
+    <p id="contact_no">1233-7777</p>
+    <p>24/7 support availaible</p>
+
+  </div>
+
+</div>  
