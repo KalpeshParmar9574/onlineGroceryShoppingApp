@@ -1,0 +1,137 @@
+<section class="vh-100 reg_form">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6 text-black">
+  
+         
+          <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-2 pt-5 pt-xl-0 mt-xl-n5">
+  
+            <form style="width: 23rem;" [formGroup]="regForm" (submit)="_regFormSubmit()">
+  
+              
+  <div class="row">
+    <div class="col-md-6 mb-4">
+      <div class="form-outline">
+        <label class="form-label" for="form3Example1m">First name</label>
+        <input type="text" id="form3Example1m" class="form-control form-control-lg"  formControlName="firstName" />
+        <span *ngIf="regForm.get('firstName')?.touched && regForm.get('firstName')?.invalid" class="text-danger">pleae enter valid first name</span>
+     
+      </div>
+    </div>
+    <div class="col-md-6 mb-4">
+      <div class="form-outline">
+        <label class="form-label" for="form3Example1n">Last name</label>
+        <input type="text" id="form3Example1n" class="form-control form-control-lg"  formControlName="lastName" />
+        <span *ngIf="regForm.get('lastName')?.touched && regForm.get('lastName')?.invalid" class="text-danger">pleae enter valid  last name</span>
+       
+      </div>
+    </div>
+  </div>
+
+  
+
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form3Example8">Address</label>
+    <input type="text" id="form3Example8" class="form-control form-control-lg"  formControlName ="address" />
+    <span *ngIf="regForm.get('address')?.touched && regForm.get('address')?.invalid" class="text-danger">pleae enter valid  Address</span>
+  
+  </div>
+
+  <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+
+    <h6 class="mb-0 me-4">Gender: </h6>
+
+    <div class="form-check form-check-inline mb-0 me-4">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
+        value="option1" formControlName="gender" name="gender" />
+      <label class="form-check-label" for="femaleGender">Female</label>
+    </div>
+
+    <div class="form-check form-check-inline mb-0 me-4">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
+        value="option2" formControlName="gender" name="gender" />
+      <label class="form-check-label" for="maleGender">Male</label>
+    </div>
+
+    <div class="form-check form-check-inline mb-0">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
+        value="option3" formControlName="gender" name="gender" />
+      <label class="form-check-label" for="otherGender">Other</label>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-4">
+
+      <select class="select" formControlName="state">
+        <option value="" selected disabled hidden>State</option>
+        <option value="2">Option 1</option>
+        <option value="3">Option 2</option>
+        <option value="4">Option 3</option>
+      </select>
+      <span *ngIf="regForm.get('state')?.touched && regForm.get('state')?.invalid" class="text-danger">pleae select state</span>
+    </div>
+    <div class="col-md-6 mb-4">
+
+      <select class="select" formControlName="city" selected  >
+        <option value="" selected disabled hidden>City</option>
+        <option value="2">Option 1</option>
+        <option value="3">Option 2</option>
+        <option value="4">Option 3</option>
+      </select>
+      <span *ngIf="regForm.get('city')?.touched && regForm.get('city')?.invalid" class="text-danger">pleae select city</span>
+    </div>
+  </div>
+
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form3Example9">DOB</label>
+    <input type="date" id="form3Example9" class="form-control form-control-lg" formControlName="dob"  />
+    <span *ngIf="regForm.get('dob')?.touched && regForm.get('dob')?.invalid" class="text-danger">pleae select Date of Birth</span>
+  </div>
+
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form3Example90" >Pincode</label>
+    <input type="text" id="form3Example90" class="form-control form-control-lg" formControlName="pincode" />
+    <span *ngIf="regForm.get('pincode')?.touched && regForm.get('pincode')?.invalid" class="text-danger">please enter valid pincode</span>
+   
+  </div>
+
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form3Example99"  >Mobile No.</label>
+    <input type="tel" id="form3Example99" class="form-control form-control-lg" formControlName="mobileNo"/>
+    <span *ngIf="regForm.get('mobileNo')?.touched && regForm.get('mobileNo')?.invalid" class="text-danger">please enter valid mobile number</span>
+  
+  </div>
+
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form3Example97"  >Email ID</label>
+    <input type="text" id="form3Example97" class="form-control form-control-lg" formControlName="email"/>
+    <span *ngIf="regForm.get('email')?.touched && regForm.get('email')?.invalid" class="text-danger">please enter valid email</span>
+  </div>
+  
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form3Example97"  >Password</label>
+    <input type="text" id="form3Example97" class="form-control form-control-lg" formControlName="password"/>
+    <span *ngIf="regForm.get('password')?.touched && regForm.get('password')?.invalid" class="text-danger">please enter password</span>
+  </div>
+  <p>Already  have an account?<a routerLink="/login" routerLinkActive="active" class="link-success">Login here</a></p>
+  <div class="d-flex justify-content-end pt-3">
+   
+    <button class="btn btn-success btn-md ms-2" [disabled]="regForm.invalid"  >Submit</button>
+  </div>
+
+  
+            </form>
+  
+          </div>
+  
+        </div>
+        <div class="col-sm-6 px-0 d-none d-sm-block">
+          <img src="../../../../assets/icon/grocery_shopping_logo.webp"
+            alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
+        </div>
+      </div>
+    </div>
+  </section>
+

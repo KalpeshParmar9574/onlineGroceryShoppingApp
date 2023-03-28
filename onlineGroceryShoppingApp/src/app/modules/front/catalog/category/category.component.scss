@@ -1,0 +1,42 @@
+.catagory_container{
+    
+
+    margin: 0;
+    padding: 0;
+    .hero_section{
+        background-image: url('../../../../../assets/icon/catagory_bg.png');
+        height: 140px;
+        width:1226.36px;
+        
+        padding: 0;
+        margin: 0;
+        #category_title{
+        
+          text-align: center;
+            font-size: 30px;
+            font-weight: 600;
+            font-family:  'Trebuchet MS', sans-serif;
+        }
+        
+    }
+
+  
+}
+.con{
+    width: 80%;
+    position: absolute;
+    font-size: 300%;
+    font-weight: 600;
+    text-align: center;
+    color: rgb(9, 9, 81);
+}
+.sec_1 {
+    height: 170px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#filter_icon{
+    margin-left: 100%;
+}

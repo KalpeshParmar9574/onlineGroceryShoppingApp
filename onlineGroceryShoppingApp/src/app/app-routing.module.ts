@@ -1,23 +1,35 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './front/users/login/login.component';
-import { RegistrationComponent } from './front/users/registration/registration.component';
+import { HomeComponent } from './layouts/home/home.component';
+
+import { RegistrationComponent } from './modules/front/users/registration/registration.component';
+import { CategoryComponent } from './modules/front/catalog/category/category.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
+    redirectTo:'home'
+  },
+  {
+    path: 'categories',
+    loadChildren:()=>import('../app/modules/front/catalog/catalog.module').then((c)=>c.CatalogModule)
+  },
+  {
+    path: 'users',
+    loadChildren:()=>import('../app/modules/front/users/users.module').then((u)=>u.UsersModule)
+  },
+ 
+  
+  {
+    path: 'home',
     component:HomeComponent
   },
   {
-    path: 'login',
-    component:LoginComponent
-  },
-  {
-    path: 'registration',
-    component:RegistrationComponent
+    path: 'home/:id',
+    component:HomeComponent
   }
+  
 ];
 
 @NgModule({
@@ -25,3 +37,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+

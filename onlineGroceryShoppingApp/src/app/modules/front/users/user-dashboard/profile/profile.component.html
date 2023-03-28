@@ -1,0 +1,36 @@
+<div class="container" id="main_container">
+
+<form [formGroup]="userDataForm" class="row" (ngSubmit)="_updateUserData()">
+    <div class="col col-md-4 ">
+      <label class="form-label" for="firstName">First Name</label>
+      <input type="text" id="firstName" class="form-control form-control-lg" formControlName="firstName"
+         />
+         <span *ngIf="userDataForm.get('firstName')?.invalid" class="text-danger">pleae enter valid first name</span>
+      <label class="form-label" for="email" >Email</label>
+      <input type="email" id="email" class="form-control form-control-lg" formControlName="email" />
+      <span *ngIf="userDataForm.get('email')?.invalid" class="text-danger">pleae enter valid email </span>
+      <label class="form-label" for="altEmail">Alternate Email</label>
+      <input type="email" id="altEmail" class="form-control form-control-lg" />
+      <span *ngIf="userDataForm.get('altEmail')?.invalid" class="text-danger">pleae enter valid Alternate Email</span>
+      <label class="form-label" for="form3Example9" >DOB</label>
+      <input type="date" id="form3Example9" class="form-control form-control-lg" formControlName="dob" />
+      <span *ngIf="userDataForm.get('dob')?.invalid" class="text-danger">pleae enter valid Date Of Birth</span>
+
+    </div>
+
+    <div class="col col-md-4 ">
+      <label class="form-label" for="form3Example1n" >Last name</label>
+      <input type="text" id="form3Example1n" class="form-control  form-control-lg" formControlName="lastName"/>
+      <span *ngIf="userDataForm.get('lastName')?.invalid" class="text-danger">pleae enter valid last name</span>
+      <label class="form-label" for="form3Example99" >Contact No.</label>
+      <input type="tel" id="form3Example99" class="form-control  form-control-lg" formControlName="mobileNo" />
+      <span *ngIf="userDataForm.get('mobileNo')?.invalid" class="text-danger">pleae enter valid contact Number</span>
+      <label class="form-label" for="form3Example99">Alerternate Contact No.</label>
+      <input type="tel" id="form3Example99" class="form-control form-control-lg " />
+    </div>
+    <span *ngIf="userDataForm.get('altMobileNo')?.invalid" class="text-danger">pleae enter valid Alternate contact Number</span>
+    <div class="col col-md-4 col_btn">
+      <button type="submit" id="btn_save" class="btn btn-success  px-4" >Save</button>
+    </div>
+  </form>
+  </div>

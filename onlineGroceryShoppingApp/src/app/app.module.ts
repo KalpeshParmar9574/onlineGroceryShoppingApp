@@ -3,23 +3,45 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { FrontModule } from './front/front.module';
+
+import { HeaderComponent } from './layouts/header/header.component';
+import { FooterComponent } from './layouts/footer/footer.component';
+import { FrontModule } from '../app/modules/front/front.module';
+import { CatalogModule } from '../app/modules/front/catalog/catalog.module';
+import { UsersModule } from '../app/modules/front/users/users.module';
+import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from "@angular/common/http";
+import { LayoutComponent } from './layouts/layout/layout.component';
+import { HomeComponent } from './layouts/home/home.component';
+
+import { SharedModule } from './shared/shared.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    LayoutComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent,
+  
+    
+  ],
+  exports: [
+    
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
-    FrontModule
+    FormsModule,
+    FrontModule,
+    CatalogModule,
+    UsersModule,
+    SharedModule,
+    
   ],
+ 
   providers: [],
   bootstrap: [AppComponent]
 })

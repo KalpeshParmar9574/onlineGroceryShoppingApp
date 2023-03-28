@@ -1,0 +1,26 @@
+
+<div class="row my-3">
+    <div class=" card p-0 rounded-0 card-1 mx-2 col rounded-3" style="width: 19%;"  *ngFor="let prod of data;let id=index "  > 
+        <img src="{{prod.image}}" (click)="onCardClick(prod.id)"
+            style="width: 100%; height: 45% ;" alt="" srcset="" class="rounded-1 m-0 p-0">
+        <small class="text-muted" style="font-size: 10px;">{{prod.category}}</small>
+        <h6>{{prod.name}}</h6>
+        <div class="d-flex justify-content-start">
+            <h6 style="font-size: x-small;"><i class="bi bi-star-fill" style=" color: rgb(209, 209, 54);"></i></h6>
+            <h6 style="font-size: x-small;"><i class="bi bi-star-fill" style=" color: rgb(209, 209, 54);"></i></h6>
+            <h6 style="font-size: x-small;"><i class="bi bi-star-fill" style=" color: rgb(209, 209, 54);"></i></h6>
+            <h6 style="font-size: x-small;"><i class="bi bi-star-fill" style=" color: rgb(209, 209, 54);"></i></h6>
+            <h6 style="font-size: x-small;"><i class="bi bi-star-fill" style=" color: rgb(88, 88, 87);"></i></h6>
+            <span style="font-size: 10px;">(4) </span>
+        </div>
+        <small class="text-muted" style="font-size: 10px;"> by <span style="color: green;">Mr.food</span></small>
+        <div class="d-flex justify-content-between">
+           <div class="">
+            <b class="text-success p-2">{{prod.price}}</b><del></del>
+           </div>
+           <button class="btn-success btn btn-sm d-flex h-75 " (click)="_addToCart(prod.id,id)">
+            <i class="bi bi-cart" ></i> <p class="">Add</p> 
+            </button>
+        </div>
+    </div>
+</div>

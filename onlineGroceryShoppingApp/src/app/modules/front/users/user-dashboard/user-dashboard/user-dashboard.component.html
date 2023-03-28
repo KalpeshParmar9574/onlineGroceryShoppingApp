@@ -1,0 +1,31 @@
+
+
+<app-banner [data]="data"></app-banner>
+
+<div class="container  d-flex">
+    <section id="sidebar">
+        <ul>
+            <li >
+                <a routerLink="profile"  routerLinkActive="activeLink">Profile</a> 
+              </li>
+              <li>
+              <a routerLink="order"  routerLinkActive="activeLink">orders</a>
+            
+              </li>
+            <li>
+                <a routerLink="address"  routerLinkActive="activeLink">Manage Address</a>
+            </li>
+            <li>
+                <a routerLink="changepassword"  routerLinkActive="activeLink">Change Password</a>
+            </li>
+            <li> <button class="btn btn-danger"><a routerLink="logout" class="text-light">Logout </a><i class="bi bi-box-arrow-right"></i></button> </li>
+        </ul>
+    </section>
+ 
+   <div class="container" id="main_container">
+
+   
+     <router-outlet></router-outlet>
+    
+    
+</div>

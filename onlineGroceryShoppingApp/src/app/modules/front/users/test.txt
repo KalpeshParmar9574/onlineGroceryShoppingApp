@@ -1,0 +1,52 @@
+
+
+<app-banner [data]="data"></app-banner>
+<div class="container  d-flex">
+    <section id="sidebar">
+        <ul>
+            <li>
+                profile
+            </li>
+            <li>
+                Order
+            </li>
+            <li>
+                Manage Address
+            </li>
+            <li>
+                Change Password
+            </li>
+            <li>LogOut</li>
+        </ul>
+    </section>
+ 
+   <div class="container" id="main_container">
+<div class="row">
+   
+      <div class="col col-md-3 ">
+        <label class="form-label" for="firstName">First Name</label>
+        <input type="text" id="firstName" class="form-control form-control-md"  />
+        <label class="form-label" for="email">Email</label>
+        <input type="email" id="email" class="form-control form-control-md"  />
+        <label class="form-label" for="altEmail">Alternate Email</label>
+        <input type="email" id="altEmail" class="form-control form-control-md"  />
+        <label class="form-label" for="form3Example9">DOB</label>
+        <input type="date" id="form3Example9" class="form-control form-control-lg"  />
+ 
+      </div>
+
+      <div class="col col-md-3 ">
+        <label class="form-label" for="form3Example1n">Last name</label>
+        <input type="text" id="form3Example1n" class="form-control "  />
+        <label class="form-label" for="form3Example99"  >Contact No.</label>
+        <input type="tel" id="form3Example99" class="form-control " />
+        <label class="form-label" for="form3Example99"  >Alerternate Contact No.</label>
+        <input type="tel" id="form3Example99" class="form-control "/>
+      </div>
+    
+   <div class="col col-md-3">
+    <button type="button" id="btn_save" class="btn btn-success  px-4">Save</button>
+   </div>
+    
+    </div>
+</div>

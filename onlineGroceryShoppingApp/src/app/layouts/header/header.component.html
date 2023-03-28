@@ -1,0 +1,113 @@
+<div class="sticky-top">
+<nav class=" navbar sticky-top navbar-expand-md bg-light px-5   ">
+  
+  <div class="row w-100">
+      <div class="col-9 col-lg-3 col-xl-3 col-xxl-3 col-md-4">
+          <div class="nav-1">
+            <a routerLink="/"> <img src="../../../assets/logo.png" class="img-fluid" alt="" srcset="" ></a> 
+          </div>
+      </div>
+      <!-- toggle btn -->
+      <button class="col-3 navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- closed toggle -->
+      <div id="navbarSupportedContent" class="collapse navbar-collapse col-lg-5 col-xl-5 col-xxl-5 col-md-4 ">
+          <div class="cream">
+              <div class="dropdown open">
+                  <a class="btn dropdown-toggle" type="button" id="triggerId" data-bs-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      All catogaries
+                  </a>
+                  <div class="dropdown-menu dm" aria-labelledby="triggerId">
+                      <a class="dropdown-item di" href="#">catagory 1</a>
+                      <a class="dropdown-item di" href="#">catagory 2</a>
+                      <a class="dropdown-item di" href="#">catagory 3</a>
+                      <a class="dropdown-item di" href="#">catagory 4</a>
+                      <a class="dropdown-item di" href="#">catagory 4</a>
+                      <a class="dropdown-item di" href="#">catagory 6</a>
+                  </div>
+              </div>
+              <div class="d-flex bg-trans">
+                  <input type="text" class=" inp border border-0" name="" id="">
+                  <button class="btn  btn-success"><i class="bi bi-search"
+                          style="color: #ffffff;"></i></button>
+              </div>
+          </div>
+      </div>
+      <div id="navbarSupportedContent" class="collapse navbar-collapse col-lg-4 col-xl-4 col-xxl-4 col-md-4">
+          <div class="d-flex justify-content-between w-100">
+              <div class="d-flex">
+                  <div class="p-0 m-0 mx-1" style="display: flex; justify-content: center; align-items: center;">
+                      <i class="bi bi-cart"></i>
+                  </div>
+                  <div class="w-50 dropdown">
+                      <button class="btn p-0 dropdown-toggle d-flex" style="align-items: center; border: 0px ;"
+                          type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
+                          aria-expanded="false">
+                          <div class="p-0 me-2 di">
+                              my cart <br><small style="color: #44a25b; font-size: 10px;">$21</small>
+                          </div>
+                      </button>
+                      <div class="dropdown-menu dm" aria-labelledby="triggerId">
+                          <div class="p-1 m-0 dropdown-item di">
+                              my cart <br><small style="color: #44a25b; font-size: 10px;">$21</small>
+                          </div>
+                          <div class="p-1 m-0 dropdown-item di">
+                              my cart <br><small style="color: #44a25b; font-size: 10px;">$21</small>
+                          </div>
+                          <div class="p-1 m-0 dropdown-item di">
+                              my cart <br><small style="color: #44a25b; font-size: 10px;">$21</small>
+                          </div>
+                          <div class="p-1 m-0 dropdown-item di">
+                              my cart <br><small style="color: #44a25b; font-size: 10px;">$21</small>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+
+              <div class="dropdown" >
+
+              
+                <button class="btn dropdown-toggle" style="align-items: center; border: 0px ;" type="button" id="triggerId"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                 
+                   <b *ngIf="userData;else userName" >{{this.userData[0].firstName}}</b>
+                   <ng-template #userName> 
+                    <i class="bi bi-person-fill" ></i>
+                   </ng-template>
+                </button>
+                <div class="dropdown-menu dm" aria-labelledby="triggerId">
+                    <span *ngIf="userData; else userBTN">
+                        <button class="btn btn-outline-info btn-sm rounded-2 my-1" (click)="_naviagte_profile()">Profile</button> <br>
+                        <button class="btn btn-outline-info btn-sm rounded-2 my-1" (click)="_naviagte_order()">Orders</button>
+                        <button class="dropdown-item di btn btn-danger my-" (click)="_logOut()">LogOut</button>
+                       
+                    </span>
+                    <ng-template #userBTN>
+                        <span class="mx-2">
+                            <button class="btn btn-outline-success my-2 rounded-2 btn-sm" (click)="_navigate_login()">login</button>
+                            <button class="btn btn-outline-info btn-sm rounded-2" (click)="_navigate_reg()">Register</button>
+                        </span>
+                    </ng-template> 
+                </div>
+              </div>
+             
+          </div>
+      </div>
+  </div>
+</nav>
+<div class="container d-flex justify-content-between flex-wrap my-2 sub_nav">
+    <button class="d-flex green">
+       <i class="bi bi-grid"></i>
+        <span class="px-2">Brows All Category</span>
+    </button>
+    <div class="">
+        <span class="co-sp"><i class="bi bi-phone " style="color: #44a25b;"></i> 1233-7777 </span>24/7 support
+    </div>
+</div>
+</div>
