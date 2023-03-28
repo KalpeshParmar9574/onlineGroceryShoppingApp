@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { min } from 'rxjs';
+
 import { userRegForm } from 'src/app/Models/userRegForm.model';
 import { UserServicesService } from 'src/app/services/user-services.service';
 

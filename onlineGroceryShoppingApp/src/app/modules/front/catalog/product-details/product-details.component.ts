@@ -66,7 +66,7 @@ export class ProductDetailsComponent implements OnInit {
   _gotoCart() {
     debugger
     
-    this.router.navigate(['cart'])
+    this.router.navigate(['./categories/cart'])
   }
   
   

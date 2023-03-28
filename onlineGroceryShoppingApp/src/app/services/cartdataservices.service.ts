@@ -10,20 +10,24 @@ export class CartdataservicesService {
   baseURL = environment.baseURL;
   cartURL = environment.cartURL;
   cartKEY: string = "cartKEY";
-  constructor(private http: HttpClient,private window:Window) { }
+  constructor(private http:HttpClient) { }
   
-  _getCartDataFromLocalStorage() {
-    const cartJsonData = this.window.localStorage.getItem(this.cartKEY);
-    return cartJsonData ? JSON.parse(cartJsonData) : null;
-  }
-  _setCartDataInLocalStorage(cartData:any) {
-    this.window.localStorage.setItem(this.cartKEY, JSON.stringify(cartData))
-    console.log("successfully done");
+  _storeItemInCart(data: any) {
+ 
+    let cartData = localStorage.getItem('cartData');
+    if (cartData) {
+      const newCartData = JSON.parse(cartData);
+      newCartData.push(data)
+      localStorage.setItem('cartData', JSON.stringify(newCartData))
+    } else {
+      localStorage.setItem('cartData',JSON.stringify([data]))
+    }
     
   }
-  clearCartDataFromLocalStorage() {
-    this.window.localStorage.removeItem(this.cartKEY)
+  _getStoreCartData() {
+   return localStorage.getItem('cartData')
   }
-
- 
+  _updateCartInServer(data:any) {
+    this.http.post<any>(this.baseURL+this.cartURL,data)
+  }
 }

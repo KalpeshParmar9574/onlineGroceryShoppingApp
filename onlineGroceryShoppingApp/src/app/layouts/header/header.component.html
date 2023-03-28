@@ -1,5 +1,5 @@
 <div class="sticky-top">
-<nav class=" navbar sticky-top navbar-expand-md bg-light px-5   ">
+<nav class=" navbar sticky-top navbar-expand-md  px-5   ">
   
   <div class="row w-100">
       <div class="col-9 col-lg-3 col-xl-3 col-xxl-3 col-md-4">
@@ -40,8 +40,9 @@
       <div id="navbarSupportedContent" class="collapse navbar-collapse col-lg-4 col-xl-4 col-xxl-4 col-md-4">
           <div class="d-flex justify-content-between w-100">
               <div class="d-flex">
-                  <div class="p-0 m-0 mx-1" style="display: flex; justify-content: center; align-items: center;">
-                      <i class="bi bi-cart"></i>
+                  <div class="p-0 m-0 mx-1" style="display: flex; justify-content: center; align-items: center;">  
+                      <i class="bi bi-cart"></i><span class="badge badge-secondary bg-success rounded-5 mb-4">1</span>
+                    
                   </div>
                   <div class="w-50 dropdown">
                       <button class="btn p-0 dropdown-toggle d-flex" style="align-items: center; border: 0px ;"
@@ -81,10 +82,10 @@
                     <i class="bi bi-person-fill" ></i>
                    </ng-template>
                 </button>
-                <div class="dropdown-menu dm" aria-labelledby="triggerId">
+                <div class="dropdown-menu dm p-3 dd-menu" aria-labelledby="triggerId">
                     <span *ngIf="userData; else userBTN">
-                        <button class="btn btn-outline-info btn-sm rounded-2 my-1" (click)="_naviagte_profile()">Profile</button> <br>
-                        <button class="btn btn-outline-info btn-sm rounded-2 my-1" (click)="_naviagte_order()">Orders</button>
+                        <button class="btn btn-outline-success btn-sm rounded-2 my-1" (click)="_naviagte_profile()">Edit Profile</button> <br>
+                        <button class="btn btn-outline-success btn-sm rounded-2 my-1" (click)="_naviagte_order()">Orders</button>
                         <button class="dropdown-item di btn btn-danger my-" (click)="_logOut()">LogOut</button>
                        
                     </span>
@@ -101,13 +102,16 @@
       </div>
   </div>
 </nav>
-<div class="container d-flex justify-content-between flex-wrap my-2 sub_nav">
-    <button class="d-flex green">
-       <i class="bi bi-grid"></i>
-        <span class="px-2">Brows All Category</span>
-    </button>
-    <div class="">
-        <span class="co-sp"><i class="bi bi-phone " style="color: #44a25b;"></i> 1233-7777 </span>24/7 support
+<div class="row ">
+    <div class="container d-flex justify-content-between flex-wrap  sub_nav  px-5">
+        <button class="d-flex green btn-lg p-2">
+           <i class="bi bi-grid"></i>
+            <span class="px-2">Brows All Category</span>
+        </button>
+        <div class="">
+            <span class="co-sp"><i class="bi bi-phone " style="color: #44a25b;"></i> 1233-7777 </span>24/7 support
+        </div>
     </div>
 </div>
+
 </div>

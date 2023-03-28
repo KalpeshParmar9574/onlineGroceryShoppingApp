@@ -9,7 +9,8 @@ import { UserServicesService } from 'src/app/services/user-services.service';
 })
 export class ManagaddressComponent {
   userDataForm!: FormGroup;
-  currenUserData!: any;
+  currentUserData!: any;
+  editMode = false;
   constructor(private userService: UserServicesService, private fb: FormBuilder) { }
   
 
@@ -17,9 +18,9 @@ export class ManagaddressComponent {
     this._initForm()
     const data = this.userService._getLoggedInUserData();
     if (data) {
-      this.currenUserData = JSON.parse(data);
+      this.currentUserData = JSON.parse(data);
       this.userDataForm.setValue({
-        address:this.currenUserData[0].address||''
+        address:this.currentUserData[0].address||''
       })
     }
 
@@ -28,7 +29,15 @@ export class ManagaddressComponent {
   _initForm(){
     this.userDataForm = this.fb.group({
       address: new FormControl('', [Validators.required]),
-  })
+      
+    }); this.userDataForm.controls['address'].disable();
   }
-  
+  toggleEditMode() {
+    this.editMode = !this.editMode;
+    if (this.editMode) {
+      this.userDataForm.controls['address'].enable();
+    } else {
+      this.userDataForm.controls['address'].disable();
+    }
+  }
 }
