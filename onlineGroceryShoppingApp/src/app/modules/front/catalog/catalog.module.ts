@@ -8,6 +8,9 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductCardComponent } from '../../../shared/product-card/product-card.component';
 import { MycartComponent } from './mycart/mycart.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { FormsModule } from '@angular/forms';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { SuccessComponent } from './success/success.component';
 
 // import { ProductCartComponent } from './my-cart/product-cart.component';
 // import {}
@@ -19,13 +22,16 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ProductListComponent,
     ProductCardComponent,
     MycartComponent,
+    CheckoutComponent,
+    SuccessComponent,
  
    
   ],
   imports: [
     CommonModule,
     SharedModule,
-    CatalogRoutingModule
+    CatalogRoutingModule,
+    FormsModule
     
     
   ],

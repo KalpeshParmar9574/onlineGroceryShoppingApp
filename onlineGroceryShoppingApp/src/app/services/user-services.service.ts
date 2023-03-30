@@ -10,13 +10,17 @@ export class UserServicesService {
   baseURL = environment.baseURL;
   userURL = environment.userURL;
   cartURL = environment.cartURL;
-  userData!: any
+  login = environment.login;
+  userData!: any;
+  serverURL = environment.serverURL;
+  registerURL = environment.register
   constructor(private http: HttpClient) { }
+
   // register the new user this is send the data to the backend
   registerUser(body:any) {
     try {
       console.log("api is called");
-      return this.http.post<any>(this.baseURL + this.userURL, body);
+      return this.http.post<any>(this.serverURL + this.registerURL, body);
       
     } catch (error:any) {
       return throwError (()=>{ new Error(error)})
@@ -25,10 +29,10 @@ export class UserServicesService {
   }
 
   // this is take an  user data from the appdb.json to verify with
-  loginUser() {
+  loginUser(data:any) {
     try {
       console.log("api is called ")
-      return this.http.get<any>(this.baseURL + this.userURL);
+      return this.http.post(this.serverURL + this.login,data);
     } catch (error:any) {
       return throwError(() => {
         new Error(error)
@@ -72,4 +76,7 @@ export class UserServicesService {
     localStorage.clear();
  }
  
+  _storeUserToken(auth:any) {
+    localStorage.setItem('userAuth',auth)
+  }
 }

@@ -29,7 +29,7 @@
   </div>
 
   
-
+<!-- 
   <div class="form-outline mb-4">
     <label class="form-label" for="form3Example8">Address</label>
     <input type="text" id="form3Example8" class="form-control form-control-lg"  formControlName ="address" />
@@ -82,20 +82,20 @@
       </select>
       <span *ngIf="regForm.get('city')?.touched && regForm.get('city')?.invalid" class="text-danger">pleae select city</span>
     </div>
-  </div>
+  </div> -->
 
-  <div class="form-outline mb-4">
+  <!-- <div class="form-outline mb-4">
     <label class="form-label" for="form3Example9">DOB</label>
     <input type="date" id="form3Example9" class="form-control form-control-lg" formControlName="dob"  />
     <span *ngIf="regForm.get('dob')?.touched && regForm.get('dob')?.invalid" class="text-danger">pleae select Date of Birth</span>
-  </div>
+  </div> -->
 
-  <div class="form-outline mb-4">
+  <!-- <div class="form-outline mb-4">
     <label class="form-label" for="form3Example90" >Pincode</label>
     <input type="text" id="form3Example90" class="form-control form-control-lg" formControlName="pincode" />
     <span *ngIf="regForm.get('pincode')?.touched && regForm.get('pincode')?.invalid" class="text-danger">please enter valid pincode</span>
    
-  </div>
+  </div> -->
 
   <div class="form-outline mb-4">
     <label class="form-label" for="form3Example99"  >Mobile No.</label>
@@ -109,6 +109,15 @@
     <input type="text" id="form3Example97" class="form-control form-control-lg" formControlName="email"/>
     <span *ngIf="regForm.get('email')?.touched && regForm.get('email')?.invalid" class="text-danger">please enter valid email</span>
   </div>
+
+
+  <!-- // added feild for the server registration  -->
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form3Example97"  >User Name</label>
+    <input type="text" id="form3Example97" class="form-control form-control-lg" formControlName="userName"/>
+    <span *ngIf="regForm.get('userName')?.touched && regForm.get('userName')?.invalid" class="text-danger">please user name</span>
+  </div>
+
   
   <div class="form-outline mb-4">
     <label class="form-label" for="form3Example97"  >Password</label>

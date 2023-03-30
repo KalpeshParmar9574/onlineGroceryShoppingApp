@@ -85,7 +85,7 @@ export class ProductdataService {
 featureProducts: any[] = [
   {
     id: 1,
-    grocery_name: 'Bananas',
+    name: 'Bananas',
     store: 'ABC Supermarket',
     price: 0.49,
     discountPrice: null,
@@ -96,7 +96,7 @@ featureProducts: any[] = [
   },
   {
     id: 2,
-    grocery_name: 'Chicken Breast',
+    name: 'Chicken Breast',
     store: 'XYZ Grocery',
     price: 5.99,
     discountPrice: 4.99,
@@ -107,7 +107,7 @@ featureProducts: any[] = [
   },
   {
     id: 3,
-    grocery_name: 'Carrots',
+    name: 'Carrots',
     store: '123 Market',
     price: 0.99,
     discountPrice: null,
@@ -118,7 +118,7 @@ featureProducts: any[] = [
   },
   {
     id: 4,
-    grocery_name: 'Apples',
+    name: 'Apples',
     store: 'ABC Supermarket',
     price: 1.29,
     discountPrice: null,
@@ -129,7 +129,7 @@ featureProducts: any[] = [
   },
   {
     id: 5,
-    grocery_name: 'Salmon Fillet',
+     name: 'Salmon Fillet',
     store: 'XYZ Grocery',
     price: 9.99,
     discountPrice: null,
@@ -140,7 +140,7 @@ featureProducts: any[] = [
   },
   {
     id: 6,
-    grocery_name: 'Cucumbers',
+      name: 'Cucumbers',
     store: '123 Market',
     price: 1.49,
     discountPrice: null,

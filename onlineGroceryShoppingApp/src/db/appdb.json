@@ -38,6 +38,19 @@
       "mobileNo": "1234567891",
       "password": "vijeet123",
       "id": 3
+    },
+    {
+      "firstName": "sunil",
+      "lastName": "sarvaiya",
+      "DateOfBirth": "2023-03-29",
+      "gender": "option2",
+      "address": "bhavnagar",
+      "pincode": "364510",
+      "city": "364510",
+      "email": "sarvaiyasunil@gmail.com",
+      "mobileNo": "9327000837",
+      "password": "11111111",
+      "id": 4
     }
   ],
   "products": [

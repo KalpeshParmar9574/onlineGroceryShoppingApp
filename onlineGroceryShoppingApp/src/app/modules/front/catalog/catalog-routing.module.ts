@@ -4,6 +4,7 @@ import { CategoryComponent } from './category/category.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { MycartComponent } from './mycart/mycart.component';
 import { HomeComponent } from 'src/app/layouts/home/home.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 // import { ProductCartComponent } from './my-cart/product-cart.component';
 
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'cart',
     component:MycartComponent
+  },
+  {
+    path: 'checkout',
+    component:CheckoutComponent
   }
   
 ];

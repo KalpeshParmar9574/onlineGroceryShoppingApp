@@ -30,4 +30,14 @@ export class CartdataservicesService {
   _updateCartInServer(data:any) {
     this.http.post<any>(this.baseURL+this.cartURL,data)
   }
+  _updateSingleProductValueInLocalStoarge(pid:number ,newProdQYT:number) {
+    let cartItems
+    const data = localStorage.getItem('cartData');
+    if (data) {
+      cartItems = JSON.parse(data)
+      cartItems[pid].prodQYT = newProdQYT;
+      cartItems[pid].totalPrice = newProdQYT * cartItems[pid].prodPrice;
+    }
+
+  }
 }

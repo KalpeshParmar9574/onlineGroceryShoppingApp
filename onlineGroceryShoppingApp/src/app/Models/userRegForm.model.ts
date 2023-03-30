@@ -13,3 +13,13 @@ export interface userRegForm{
 
 }
 
+export interface userRegServerForm
+    {
+        first_name: string,
+        last_name: string,
+        primary_mobile_number: number,
+        primary_email: any,
+        username:any,
+        password: any,
+    }
+

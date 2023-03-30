@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { userRegForm } from 'src/app/Models/userRegForm.model';
+import { userRegForm, userRegServerForm } from 'src/app/Models/userRegForm.model';
 import { UserServicesService } from 'src/app/services/user-services.service';
 
 @Component({
@@ -21,15 +21,16 @@ export class RegistrationComponent {
   this.regForm = this.fb.group({
     firstName: new FormControl('', [Validators.required, Validators.min(2)]),
     lastName: new FormControl('', [Validators.required, Validators.min(2)]),
-    dob: new FormControl('', [Validators.required]),
-    gender: new FormControl('', [Validators.required,]),
-    address: new FormControl('', [Validators.required]),
-    pincode: new FormControl('', [Validators.required, Validators.min(6)]),
-    state: new FormControl('', [Validators.required]),
-    city: new FormControl('', [Validators.required]),
+    // dob: new FormControl('', [Validators.required]),
+    // gender: new FormControl('', [Validators.required,]),
+    // address: new FormControl('', [Validators.required]),
+    // pincode: new FormControl('', [Validators.required, Validators.min(6)]),
+    // state: new FormControl('', [Validators.required]),
+    // city: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     mobileNo: new FormControl('', [Validators.required]),
-   password:new FormControl('',Validators.required,)
+    password: new FormControl('', Validators.required,),
+   userName: new FormControl('',[Validators.required])
   })
   
 }
@@ -38,20 +39,29 @@ export class RegistrationComponent {
   _regFormSubmit() {
 
     const userData = this.regForm.getRawValue(); // get the values from the userData form 
-    const body: userRegForm = {
+    // const body: userRegForm = {
  
-      firstName: userData.firstName ||"",
-      lastName: userData.lastName ||"",
-      DateOfBirth: userData.dob ||Date,
-      gender: userData.gender||"",
-      address: userData.address||"",
-      pincode: userData.pincode||"",
-      city: userData.pincode||"",
-      email: userData.email||"",
-      mobileNo: userData.mobileNo||"",
-      password:userData.password||"",
+    //   firstName: userData.firstName ||"",
+    //   lastName: userData.lastName ||"",
+    //   DateOfBirth: userData.dob ||Date,
+    //   gender: userData.gender||"",
+    //   address: userData.address||"",
+    //   pincode: userData.pincode||"",
+    //   city: userData.pincode||"",
+    //   email: userData.email||"",
+    //   mobileNo: userData.mobileNo||"",
+    //   password:userData.password||"",
   
 
+    // }  for the json server
+
+    const body: userRegServerForm = {
+      first_name: userData.firstName ,
+        last_name:userData.lastName,
+        primary_mobile_number: userData.mobileNo,
+        primary_email:  userData.email,
+        username:userData.userName,
+        password:userData.password,
     }
     console.log(body);
     
