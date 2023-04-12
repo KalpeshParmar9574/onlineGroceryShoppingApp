@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { cartItem } from 'src/app/Models/cartItem.model';
 import { CartdataservicesService } from 'src/app/services/cartdataservices.service';
+
 import { ProductdataService } from 'src/app/services/productdata.service';
 import { UserServicesService } from 'src/app/services/user-services.service';
 
@@ -28,50 +29,31 @@ name: any;
    
   }
   ngOnInit(): void {
-
-    window.scroll(0, 0)
-    // below method is getting data from the server and store in prodData
-    this.prodData = this.prodDataService.getSingleProduct(this.productID).subscribe((productData) => {
-      this.prodData = productData;
-      this.totalPrice = this.prodData.price;
-      
-    }, (error:any) => {
-      alert("something went wring please try again later ",)
-    })
-    
-   // getting user data from the localstorage 
-    const uData = this.userService._getLoggedInUserData();
-    if (uData) {
-      this.userData = JSON.parse(uData);
-      // this.userService.loginUser().subscribe((r) => {
-      //   console.log(r,"user data from server ");
-        
-      // })
-     
-      
-    } else {
-      alert("please logged ")
-    }
-
-   
+    this._getProdData()
+    this._getUserData()
   }
-
+  _getProdData() {
+    this.prodDataService._getProductById(this.productID).subscribe((res) => {
+      this.prodData = res.data
+      console.log(this.prodData);
+    }, (error) => {
+      console.log(error);
+      
+  })
+}
   
-
-
   _gotoCart() {   // this is store the item data into cart object in the local storage and redirect user to the the cart page 
-    debugger
+
     if (this.prodCount > 0) {
       const data: cartItem = {
-        productID: this.prodData.id,
-        userID: this.userData[0].id,
-        ProdName:this.prodData.name,
-        prodImg: this.prodData.image,
-        prodQYT: this.prodCount,
-        prodPrice:  this.prodData.price,
-        prodTotalPrice:this.totalPrice*this.prodCount,
-       
-        category:this.prodData.category
+        product_id: this.prodData.id,
+        product_name:this.prodData.title,
+        qty: this.prodCount,
+        product_amount: this.prodData.amount,
+        discount_type: this.prodData.discount_type,
+        discount_amount:this.prodData.discount_amount,
+        userID: this.userData.addresses[0].customer_id,
+        prodTotalPrice:this.prodCount*this.prodData.amount
       
       }
       console.log(data);
@@ -87,7 +69,14 @@ name: any;
  
   } 
   
-  
+  _getUserData() {
+    const data = sessionStorage.getItem('userData')
+    if (data) {
+      this.userData = JSON.parse(data);
+    }
+
+    
+ }
 
 }
 

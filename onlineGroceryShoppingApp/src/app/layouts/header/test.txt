@@ -1,0 +1,22 @@
+ <div class="dropdown">
+                <button class="btn dropdown-toggle" style="align-items: center; border: 0px ;" type="button" id="triggerId"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <b *ngIf="userData; else userName">{{userData.username}}</b>
+                    <ng-template #userName>
+                        <i class="bi bi-person-fill"></i>
+                    </ng-template>
+                </button>
+                <div class="dropdown-menu dm p-3 dd-menu" aria-labelledby="triggerId">
+                    <span *ngIf="userData; else userBTN">
+                        <button class="btn btn-outline-success btn-sm rounded-2 my-1" (click)="_navigate_profile()">Edit Profile</button> <br>
+                        <button class="btn btn-outline-success btn-sm rounded-2 my-1" (click)="_navigate_orders()">Orders</button>
+                        <button class="dropdown-item di btn btn-danger my-1" (click)="_logOut()">LogOut</button>
+                    </span>
+                    <ng-template #userBTN>
+                        <span class="mx-2">
+                            <button class="btn btn-outline-success my-2 rounded-2 btn-sm" (click)="_navigate_login()">login</button>
+                            <button class="btn btn-outline-info btn-sm rounded-2" (click)="_navigate_reg()">Register</button>
+                        </span>
+                    </ng-template>
+                </div>
+            </div>

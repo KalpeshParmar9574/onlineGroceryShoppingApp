@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { userRegForm, userRegServerForm } from 'src/app/Models/userRegForm.model';
+import {  userRegServerForm } from 'src/app/Models/userForms.model';
+import { UserAuthService } from 'src/app/services/user-auth.service';
 import { UserServicesService } from 'src/app/services/user-services.service';
 
 @Component({
@@ -12,7 +13,7 @@ import { UserServicesService } from 'src/app/services/user-services.service';
 })
 export class RegistrationComponent {
   regForm!:FormGroup;
-  constructor(private fb: FormBuilder , private regService:UserServicesService,private router :Router) {
+  constructor(private fb: FormBuilder , private router :Router,private userAuthService:UserAuthService) {
     this.initRegForm()
   }
 // initilzed the registration form 
@@ -21,15 +22,10 @@ export class RegistrationComponent {
   this.regForm = this.fb.group({
     firstName: new FormControl('', [Validators.required, Validators.min(2)]),
     lastName: new FormControl('', [Validators.required, Validators.min(2)]),
-    // dob: new FormControl('', [Validators.required]),
-    // gender: new FormControl('', [Validators.required,]),
-    // address: new FormControl('', [Validators.required]),
-    // pincode: new FormControl('', [Validators.required, Validators.min(6)]),
-    // state: new FormControl('', [Validators.required]),
-    // city: new FormControl('', [Validators.required]),
+
     email: new FormControl('', [Validators.required, Validators.email]),
     mobileNo: new FormControl('', [Validators.required]),
-    password: new FormControl('', Validators.required,),
+    password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)]),
    userName: new FormControl('',[Validators.required])
   })
   
@@ -39,21 +35,7 @@ export class RegistrationComponent {
   _regFormSubmit() {
 
     const userData = this.regForm.getRawValue(); // get the values from the userData form 
-    // const body: userRegForm = {
- 
-    //   firstName: userData.firstName ||"",
-    //   lastName: userData.lastName ||"",
-    //   DateOfBirth: userData.dob ||Date,
-    //   gender: userData.gender||"",
-    //   address: userData.address||"",
-    //   pincode: userData.pincode||"",
-    //   city: userData.pincode||"",
-    //   email: userData.email||"",
-    //   mobileNo: userData.mobileNo||"",
-    //   password:userData.password||"",
-  
 
-    // }  for the json server
 
     const body: userRegServerForm = {
       first_name: userData.firstName ,
@@ -64,8 +46,8 @@ export class RegistrationComponent {
         password:userData.password,
     }
     console.log(body);
-    
-    this.regService.registerUser(body).subscribe((res) => {  // calling the service for adding new user in json serverbol
+    debugger
+    this.userAuthService._userRegister(body).subscribe((res) => {  // calling the service for registration
       if (res) {
         alert("register successfully")
         this.router.navigate(['/home'],)

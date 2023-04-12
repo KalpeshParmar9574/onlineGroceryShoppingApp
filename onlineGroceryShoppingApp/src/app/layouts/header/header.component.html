@@ -15,19 +15,19 @@
       </button>
       <!-- closed toggle -->
       <div id="navbarSupportedContent" class="collapse navbar-collapse col-lg-5 col-xl-5 col-xxl-5 col-md-4 ">
-          <div class="cream">
+          <div class="cream" >
               <div class="dropdown open">
                   <a class="btn dropdown-toggle" type="button" id="triggerId" data-bs-toggle="dropdown"
                       aria-haspopup="true" aria-expanded="false">
                       All catogaries
                   </a>
-                  <div class="dropdown-menu dm" aria-labelledby="triggerId">
-                      <a class="dropdown-item di" href="#">catagory 1</a>
-                      <a class="dropdown-item di" href="#">catagory 2</a>
-                      <a class="dropdown-item di" href="#">catagory 3</a>
-                      <a class="dropdown-item di" href="#">catagory 4</a>
-                      <a class="dropdown-item di" href="#">catagory 4</a>
-                      <a class="dropdown-item di" href="#">catagory 6</a>
+                  <div class="dropdown-menu dm" aria-labelledby="triggerId" >
+                    <ul *ngFor="let item of categories">
+                        <li>
+                            <a class="dropdown-item di" [routerLink]="['/./categories/category',]" >{{item.title}}</a>
+                        </li>
+                    </ul>  
+                     
                   </div>
               </div>
               <div class="d-flex bg-trans">
@@ -41,7 +41,7 @@
           <div class="d-flex justify-content-between w-100">
               <div class="d-flex">
                   <div class="p-0 m-0 mx-1" style="display: flex; justify-content: center; align-items: center;">  
-                      <i class="bi bi-cart"></i><span class="badge badge-secondary bg-success rounded-5 mb-4">1</span>
+                  <a routerLink="categories/cart" class="text-dark"><i class="bi bi-cart"></i><span class="badge badge-secondary bg-success rounded-5 mb-2" *ngIf="cartData">{{cartData.length}}</span></a>    
                     
                   </div>
                   <div class="w-50 dropdown">
@@ -49,23 +49,18 @@
                           type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
                           aria-expanded="false">
                           <div class="p-0 me-2 di">
-                              my cart <br><small style="color: #44a25b; font-size: 10px;">$21</small>
+                              my cart <br>
                           </div>
                       </button>
-                      <div class="dropdown-menu dm" aria-labelledby="triggerId">
-                          <div class="p-1 m-0 dropdown-item di">
-                              my cart <br><small style="color: #44a25b; font-size: 10px;">$21</small>
-                          </div>
-                          <div class="p-1 m-0 dropdown-item di">
-                              my cart <br><small style="color: #44a25b; font-size: 10px;">$21</small>
-                          </div>
-                          <div class="p-1 m-0 dropdown-item di">
-                              my cart <br><small style="color: #44a25b; font-size: 10px;">$21</small>
-                          </div>
-                          <div class="p-1 m-0 dropdown-item di">
-                              my cart <br><small style="color: #44a25b; font-size: 10px;">$21</small>
-                          </div>
-                      </div>
+                     
+                        <div class="dropdown-menu dm" aria-labelledby="triggerId"  >
+                            <div class="p-1 m-0 dropdown-item di" *ngFor="let item of cartData">
+                                {{item.product_name}} <br><small style="color: #44a25b; font-size: 10px;">{{item.prodTotalPrice}}</small>
+                            </div>
+                            
+                        </div>
+                      
+                      
                   </div>
               </div>
 
@@ -75,17 +70,17 @@
               
                 <button class="btn dropdown-toggle" style="align-items: center; border: 0px ;" type="button" id="triggerId"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
+                
                  
-                   <b *ngIf="userData;else userName" >{{this.userData[0].firstName}}</b>
+                   <b *ngIf="userData;else userName" >{{userData.username}}</b>
                    <ng-template #userName> 
                     <i class="bi bi-person-fill" ></i>
                    </ng-template>
                 </button>
                 <div class="dropdown-menu dm p-3 dd-menu" aria-labelledby="triggerId">
                     <span *ngIf="userData; else userBTN">
-                        <button class="btn btn-outline-success btn-sm rounded-2 my-1" (click)="_naviagte_profile()">Edit Profile</button> <br>
-                        <button class="btn btn-outline-success btn-sm rounded-2 my-1" (click)="_naviagte_order()">Orders</button>
+                        <button class="btn btn-outline-success btn-sm rounded-2 my-1" (click)="_navigate_profile()">Edit Profile</button> <br>
+                        <button class="btn btn-outline-success btn-sm rounded-2 my-1" (click)="_navigate_orders()">Orders</button>
                         <button class="dropdown-item di btn btn-danger my-" (click)="_logOut()">LogOut</button>
                        
                     </span>
@@ -104,7 +99,7 @@
 </nav>
 <div class="row ">
     <div class="container d-flex justify-content-between flex-wrap  sub_nav  px-5">
-        <button class="d-flex green btn-lg p-2">
+        <button class="d-flex green btn-lg p-2 " (click)="_navigate_allCategories()">
            <i class="bi bi-grid"></i>
             <span class="px-2">Brows All Category</span>
         </button>

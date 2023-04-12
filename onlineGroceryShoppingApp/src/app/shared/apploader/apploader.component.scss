@@ -1,0 +1,12 @@
+.ani{
+    margin-left: 25%;
+    animation: fadeOut 5s ease-in-out forwards;
+}
+@keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }

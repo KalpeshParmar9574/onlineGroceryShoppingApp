@@ -1,19 +1,19 @@
-<!-- <app-banner [data]="prodData.name"></app-banner> -->
+<app-banner [data]="prodData.title"></app-banner>
 <div class="container" style="width: 100%;">
     <div class="row">
       <div class="col-md-2 mt-3 im w-50 h-50   ">
-        <img class=" rounded-3" src="{{prodData.image}}" alt="" srcset="">
+        <img class=" rounded-3 h-50 w-50" src="{{prodData.images}}" alt="" srcset="">
       </div>
       <div class="col-md-5 p-4">
         <div class="flex">
           <div class="d-flex flex-column">
-            <h4 class="h4">{{prodData.name}}</h4>
-            <small class="text-muted">1kg, </small>
+            <h4 class="h4">{{prodData.title}}</h4>
+            <small class="text-muted">Discount {{prodData.discount_amount}} </small>
           </div>
           <h4><i class="bi bi-heart"></i></h4>
         </div>
         <div class="flex py-3 mb-5">
-          <span>Review</span>
+          <span>{{prodData.short_description}}</span>
           <div class="d-flex flex-row">
             <i class="fa-solid fa-star" style="color: #ff0000;"></i>
             <i class="fa-solid fa-star" style="color: #ff0000;"></i>
@@ -27,7 +27,7 @@
             
            <input type="number"   [(ngModel)]="prodCount" value="{{prodCount}}" min="0">
           </div>
-          <span style="font-weight: 100;">${{prodCount*prodData.price}}</span>
+          <span style="font-weight: 100;">{{prodCount*prodData.amount|currency}}</span>
         </div>
         <div class="d-flex p-2 mt-5">
           <button class="btn btn-success x" (click)="_gotoCart()" >Add To Cart</button>
@@ -36,7 +36,8 @@
     </div>
     <div class="row desc">
       <p>
-        {{prodData.description}} 
+        {{prodData.description
+        }} 
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium rerum iure iusto nulla eligendi eveniet esse totam, praesentium unde consequuntur optio corrupti. Dolorum, nostrum porro!
       </p>
     </div>

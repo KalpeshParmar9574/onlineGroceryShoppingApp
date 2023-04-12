@@ -1,0 +1,68 @@
+<div class="container" id="main_container">
+
+    <form  class="row" [formGroup]="addForm" (ngSubmit)="_addAddress()"  >
+        
+        <div class="col col-md-4 ">
+          <label class="form-label" for="addLine1">Address Line 1</label>
+          <input type="text" id="addLine1" class="form-control w-100" formControlName="addressL1"
+             />
+             <span *ngIf=" addForm.get('addressL1')?.touched && addForm.get('addressL1')?.invalid" class="text-danger"> <small>please enter valid address</small> </span>
+             <label class="form-label" for="landmark">land mark</label>
+          <input type="text" id="landmark" class="form-control w-100" formControlName="landMark"
+             />
+             <span *ngIf=" addForm.get('landMark')?.touched && addForm.get('landMark')?.invalid " class="text-danger"> <small>please enter land mark</small> </span>
+
+             <label class="form-label" for="pincode">Pincode</label>
+             <input type="text" id="pincode" class="form-control w-50" formControlName="pin"
+                />
+                <span *ngIf="addForm.get('pin')?.touched && addForm.get('pin')?.invalid " class="text-danger"> <small>please enter valid pincode</small> </span>
+
+                <select class="form-select my-4 w-50" aria-label="Default select example" formControlName="state">
+                    <option value="0" disabled>State</option>
+                    <option value="GJ">Gujarat</option>
+                    <option value="MH">Maharastra</option>
+                    <option value="RJ">Rajasthan</option>
+                </select>
+                <span *ngIf="addForm.get('state')?.touched && addForm.get('state')?.invalid" class="text-danger">please select state</span>
+                
+                
+                <label class="form-label" for="tag">Tag</label>
+                <input type="text" id="tag" class="form-control w-50" formControlName="tag"
+                />
+                <span *ngIf="addForm.get('tag')?.touched && addForm.get('tag')?.invalid " class="text-danger"> <small>please enter tag</small> </span>
+                
+        </div>
+
+        <div class="col col-md-4 ">
+            <label class="form-label" for="addLine2">Address Line 2</label>
+            <input type="text" id="addLine2" class="form-control w-100" formControlName="addressL2"
+            />
+            <span *ngIf="addForm.get('addressL2')?.touched&& addForm.get('addLine2')?.invalid" class="text-danger"> <small>please enter address line 2</small> </span>
+               <label class="form-label" for="area">Area</label>
+            <input type="text" id="area" class="form-control w-100" formControlName="area"
+            />
+            <span *ngIf=" addForm.get('area')?.touched&& addForm.get('area')?.invalid" class="text-danger"> <small>please enter area</small> </span>
+            
+            <label class="form-label" for="area">city</label>
+            <input type="text" id="area" class="form-control w-100" formControlName="city"
+            />
+            <span *ngIf="addForm.get('city')?.touched&& addForm.get('city')?.invalid" class="text-danger"> <small>please enter city</small> </span>
+            
+            
+            <select class="form-select my-4 w-50" aria-label="Default select example" formControlName="country">
+                <option value="0" disabled>Country</option>
+                <option value="IN">India</option>
+      
+                
+                  </select>
+                <span *ngIf="addForm.get('country')?.touched&& addForm.get('country')?.invalid " class="text-danger">please select country</span>
+          </div>
+          
+          <div class="col">
+            <button type="submit" class="btn btn-success " [disabled]="addForm.invalid">{{btnTxt}}</button>
+          </div>
+      
+    
+       
+      </form>
+      </div>

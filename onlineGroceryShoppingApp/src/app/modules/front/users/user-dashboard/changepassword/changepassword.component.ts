@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { userRegForm } from 'src/app/Models/userRegForm.model';
+import { Changerpassword, userRegForm } from 'src/app/Models/userForms.model';
 import { UserServicesService } from 'src/app/services/user-services.service';
 
 @Component({
@@ -10,10 +10,7 @@ import { UserServicesService } from 'src/app/services/user-services.service';
 })
 export class ChangepasswordComponent implements OnInit {
   userDataForm!: FormGroup;
-  currenUserData!: any;
-  cpass!: any;
-  currentData!: any;
-  flag : boolean=true;
+  flag : boolean=false;
   
 
   constructor(private fb: FormBuilder, private userService: UserServicesService) {
@@ -21,77 +18,55 @@ export class ChangepasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const data = this.userService._getLoggedInUserData();
+    this._initForm()
   
-    if (data) {
-      this.currenUserData = JSON.parse(data);
-      this.cpass = this.currenUserData[0].password;
-    }
+   
   }
   
   _initForm() {
     this.userDataForm = this.fb.group({
-      current_password: new FormControl('', [Validators.required,this.currentPasswords.bind(this)]),
-      new_password: new FormControl('', Validators.required),
-      confirm_password: new FormControl('', [Validators.required,this.matchPasswords.bind(this)])
+      current_password: new FormControl('', [Validators.required,Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/) ]),
+      new_password: new FormControl('', [Validators.required,Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/) ]),
+      confirm_password: new FormControl('', [Validators.required,Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/), ])
     });
+  }
+ 
+  _matchValues(control: AbstractControl): ValidationErrors | null {
+    const newPass = this.userDataForm.get('new_password')?.value;
+    const confirmPass = control.value;
+    
+    if (newPass !== confirmPass) {
+      return { 'matchValues': true };
+    }
+    
+    return null;
   }
   _changePassFormSubmit()  {
 
-
+debugger
     const userData = this.userDataForm.getRawValue();
   
-      const body: userRegForm = {
- 
-        firstName: this.currenUserData[0].firstName || "",
-        lastName: this.currenUserData[0].lastName || "",
-        DateOfBirth: this.currenUserData[0].DateOfBirth || Date,
-        gender: this.currenUserData[0].gender || "",
-        address: this.currenUserData[0].address || "",
-        pincode: this.currenUserData[0].pincode || "",
-        city: this.currenUserData[0].city || "",
-        email: this.currenUserData[0].email || "",
-        mobileNo: this.currenUserData[0].mobileNo || "",
-        password: userData.new_password || "",
-    
-  
+      const body: Changerpassword = {
+        oldPassword : userData.current_password, 
+        newPassword : userData.confirm_password
       }
-  
-      this.userService._setLoggedInUserData(body); // setting updated password in local storage 
-      this.userService._updateUserData(this.currenUserData[0].id, body).subscribe((res) => {
-        if (res) {
-          alert("password updated successfully")
-        }
-      }, (error: any) => {
-        alert("something went wrong please try again later ",)
-        console.log(error);
-        
-      });
-      return this.flag
+    
+    this.userService._changePass(body).subscribe((res) => {
+      if (res) {
+        alert("success")
+      }
+    }, (err) => {
+      console.log(err);
+      this.flag = true
+      
+      
+    })
      
-  
-
-    // _checkCurrentPass(control: AbstractControl): ValidationErrors | null {
-    //   if (control.value !== this.cpass) {
-    //     return null;
-    //   } else {
-    //     return { _checkCurrentPass: true };
-    //   }
-    // }
-
-
+    
   }
 
-  
-  matchPasswords(control: AbstractControl): ValidationErrors | null {
-    const new_password = control.root.get('new_password') as FormControl;
-    return (new_password !== control.value  ) ? {matchPasswords: true} : null;
-  }
-  currentPasswords(control: AbstractControl): ValidationErrors | null {
-    debugger
-   
-    return (this.cpass !== control.value  ) ? {matchPasswords: true} : null;
-  }
+
+
   
   
 }

@@ -24,12 +24,13 @@ export class CartdataservicesService {
     }
     
   }
+  _updateCartData(data:any) {
+    localStorage.setItem('cartData',JSON.stringify(data))
+  }
   _getStoreCartData() {
    return localStorage.getItem('cartData')
   }
-  _updateCartInServer(data:any) {
-    this.http.post<any>(this.baseURL+this.cartURL,data)
-  }
+
   _updateSingleProductValueInLocalStoarge(pid:number ,newProdQYT:number) {
     let cartItems
     const data = localStorage.getItem('cartData');
@@ -40,4 +41,19 @@ export class CartdataservicesService {
     }
 
   }
+  _getCartDataByUser(id: any) {
+    let cartData=[];
+    const data = localStorage.getItem('cartData')
+    if (data) {
+      cartData = JSON.parse(data)
+      let currentUserCartData = cartData.filter((item:any) => {
+        if (item.userID == id) {
+         return item
+       }
+      }) 
+      return currentUserCartData
+    }
+  }
+
+  
 }

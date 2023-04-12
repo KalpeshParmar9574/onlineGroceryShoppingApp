@@ -5,6 +5,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { MycartComponent } from './mycart/mycart.component';
 import { HomeComponent } from 'src/app/layouts/home/home.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { SuccessComponent } from './success/success.component';
 
 // import { ProductCartComponent } from './my-cart/product-cart.component';
 
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'checkout',
     component:CheckoutComponent
+  },
+  {
+    path: 'success',
+    component:SuccessComponent
   }
   
 ];

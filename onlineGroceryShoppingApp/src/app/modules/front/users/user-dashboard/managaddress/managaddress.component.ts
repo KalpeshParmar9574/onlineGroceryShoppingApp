@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserServicesService } from 'src/app/services/user-services.service';
 
 @Component({
@@ -8,36 +9,37 @@ import { UserServicesService } from 'src/app/services/user-services.service';
   styleUrls: ['./managaddress.component.scss']
 })
 export class ManagaddressComponent {
-  userDataForm!: FormGroup;
-  currentUserData!: any;
-  editMode = false;
-  constructor(private userService: UserServicesService, private fb: FormBuilder) { }
+ 
+  currentUserAddData!: any;
+ 
+  constructor(private userService:UserServicesService,private router : Router) { }
   
 
   ngOnInit() {
-    this._initForm()
-    const data = this.userService._getLoggedInUserData();
-    if (data) {
-      this.currentUserData = JSON.parse(data);
-      this.userDataForm.setValue({
-        address:this.currentUserData[0].address||''
-      })
-    }
-
+    this._getAdrress()
+   }
+  
+  _getAdrress() {
+    this.userService._getUserDataFromServer().subscribe((res) => {
+      console.log(res);
+      this.currentUserAddData = res.data.addresses;
+     
+   })
   }
 
-  _initForm(){
-    this.userDataForm = this.fb.group({
-      address: new FormControl('', [Validators.required]),
+  _deleteAdd(id:any) {
+    this.userService._deleteAddress(id.toString()).subscribe((res) => {
+      console.log(res);
+      window.location.reload()
+    }, (error) => {
+      console.log(error);
       
-    }); this.userDataForm.controls['address'].disable();
+    })
   }
-  toggleEditMode() {
-    this.editMode = !this.editMode;
-    if (this.editMode) {
-      this.userDataForm.controls['address'].enable();
-    } else {
-      this.userDataForm.controls['address'].disable();
-    }
+  _updateAdd(id:any) {
+    this.router.navigate(['./users/user-dashboard/addAdress',id])
   }
-}
+  }
+
+  
+

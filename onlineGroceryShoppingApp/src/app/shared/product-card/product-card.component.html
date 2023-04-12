@@ -1,10 +1,11 @@
 
 <div class="row my-3">
-    <div class=" card p-0 rounded-0 card-1 mx-2 col rounded-3" style="width: 19%;height:10%"  *ngFor="let prod of data;let id=index "  > 
-        <img src="{{prod.image}}" (click)="onCardClick(prod.id)"
-            style="width: 100%; height: 45% ;" alt="" srcset="" class="rounded-1 m-0 p-0">
-        <small class="text-muted" style="font-size: 10px;">{{prod.category}}</small>
-        <h6>{{prod.name}}</h6>
+    <div class=" card p-0 rounded-0 card-1 mx-2 col rounded-3 col-4 my-2" style="width:auto;height:auto"  *ngFor="let prod of data;let id=index "  > 
+        <img class="placeholder" src="{{prod.avatar_image}}" (click)="onCardClick(prod.id)"
+            style="width: 100%; height: 90px ;" alt="{{prod.short_description}}" srcset="" class="rounded-1 m-0 p-0">
+            
+        <small class="text-muted" style="font-size: 10px;">dummy category</small>
+        <h6> <strong style="font-size: 15px;"> {{prod.title}}</strong></h6>
         <div class="d-flex justify-content-start">
             <h6 style="font-size: x-small;"><i class="bi bi-star-fill" style=" color: rgb(209, 209, 54);"></i></h6>
             <h6 style="font-size: x-small;"><i class="bi bi-star-fill" style=" color: rgb(209, 209, 54);"></i></h6>
@@ -13,10 +14,10 @@
             <h6 style="font-size: x-small;"><i class="bi bi-star-fill" style=" color: rgb(88, 88, 87);"></i></h6>
             <span style="font-size: 10px;">(4) </span>
         </div>
-        <small class="text-muted" style="font-size: 10px;"> by <span style="color: green;">Mr.food</span></small>
+        <small class="text-muted" style="font-size: 10px;"> {{prod.short_description}}</small>
         <div class="d-flex justify-content-between">
            <div class="">
-            <b class="text-success p-2">{{prod.price}}</b><del></del>
+            <b class="text-success p-1">{{prod.amount|currency}}</b><del></del>
            </div>
            <button class="btn-outline-success btn d-flex mb-2 pt-1 " style="height:30px;" (click)="_addToCart(prod.id,id)">
             <i class="bi bi-cart" ></i> <p class="">Add</p> 
@@ -24,3 +25,46 @@
         </div>
     </div>
 </div>
+
+
+
+
+<!-- amount
+: 
+60
+avatar_image
+: 
+"1680602125915-male.jpg"
+createdAt
+: 
+"2023-04-04T09:55:25.000Z"
+deleted_at
+: 
+null
+description
+: 
+"description 1"
+discount_amount
+: 
+0
+discount_type
+: 
+1
+id
+: 
+1
+images
+: 
+null
+is_active
+: 
+true
+short_description
+: 
+"short description 1"
+slug
+: 
+"product-1"
+title
+: 
+"product-1" -->

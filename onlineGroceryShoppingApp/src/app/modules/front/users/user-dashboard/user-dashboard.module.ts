@@ -9,6 +9,7 @@ import { ManagaddressComponent } from './managaddress/managaddress.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { LogoutComponent } from './logout/logout.component';
+import { AddAddressComponent } from './add-address/add-address.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LogoutComponent } from './logout/logout.component';
     OrderComponent,
     ManagaddressComponent,
     ChangepasswordComponent,
-    LogoutComponent
+    LogoutComponent,
+    AddAddressComponent
   ],
   imports: [
     CommonModule,

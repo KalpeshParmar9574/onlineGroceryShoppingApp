@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { cartItem } from 'src/app/Models/cartItem.model';
 import { CartdataservicesService } from 'src/app/services/cartdataservices.service';
+
 import { UserServicesService } from 'src/app/services/user-services.service';
 
 
@@ -16,61 +17,47 @@ export class ProductCardComponent {
   @Input() data !:any;
   storeCartData: any[] = [];
   userData!: any;
-  constructor(private route: Router,private userService :UserServicesService,private cartService:CartdataservicesService ) {
+  constructor(private route: Router,private userService :UserServicesService,private cartService:CartdataservicesService, ) {
+
     
   }
-  ngOnInit() {
-    const data = this.userService._getLoggedInUserData();
-    if (data) {
-      this.userData = JSON.parse(data)
-      console.log(this.userData[0].id);
-      
-    }
-   
+  ngOnInit() {    
+    this._getUserData()
   }
-  onCardClick(id:any) {
+  onCardClick(id: any) {
     this.route.navigate(['./categories/product-details', id]);
-    console.log(this.data);
-    
+    console.log(this.data);  
   }
   _addToCart(id: number, prodIDX: number) {
-    if (this.userData) {
-    console.log(this.data);
-    
-    
-      
-      const productData :cartItem ={
-        
-
-
-        productID: id,
-        userID: this.userData[0].id,
-        ProdName: this.data[prodIDX].name,
-        prodImg:this.data[prodIDX].image,
-        prodQYT:1,
-        prodPrice: this.data[prodIDX].price,
-        prodTotalPrice:this.data[prodIDX].price,
-        category: this.data[prodIDX].category
-        
-        // userID: this.userData[0].id,
-        // productID: id,
-        
-        // name: this.data[prodIDX].name,
-        // description: this.data[prodIDX].description,
-        // category: this.data[prodIDX].category,
-        // price: this.data[prodIDX].price,
-        // totalPrice:this.data[prodIDX].price ,
-        // image: this.data[prodIDX].image,
-        // prodQYT: 1,
-        
   
+    console.log(this.data);
+    console.log(prodIDX);
+    if (this.userData) {
+  
+      const productData :cartItem ={
+        product_id: this.data[prodIDX].id,
+        product_name:this.data[prodIDX].title,
+        qty: 1,
+        product_amount: this.data[prodIDX].amount,
+        discount_type: this.data[prodIDX].discount_type,
+        discount_amount: this.data[prodIDX].discount_amount,
+        userID: this.userData.addresses[0].customer_id,
+        prodTotalPrice:this.data[prodIDX].amount
       }
-      this.cartService._storeItemInCart(productData);
-      
+       console.log(productData);
+       this.cartService._storeItemInCart(productData)
+
     } else {
       alert('login is required')
     }
     
   }
-  
+  _getUserData() {
+    const data = sessionStorage.getItem('userData')
+    if (data) {
+      this.userData = JSON.parse(data);
+    }
+
+    
+ }
 }

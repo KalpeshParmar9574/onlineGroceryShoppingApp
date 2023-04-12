@@ -11,9 +11,9 @@
               
   
               <div class="form-outline mb-4">
-                <label class="form-label" for="form2Example18">Email address</label>
-                <input type="email" id="form2Example18" class="form-control form-control-lg" formControlName="username" />
-                <span *ngIf="loginForm.get('username')?.touched && loginForm.get('username')?.invalid" class="text-danger">please enter email</span>
+                <label class="form-label" for="form2Example18">User Name</label>
+                <input type="text" id="form2Example18" class="form-control form-control-lg" formControlName="username" />
+                <span *ngIf="loginForm.get('username')?.touched && loginForm.get('username')?.invalid" class="text-danger">please enter user name</span>
               </div>
   
               <div class="form-outline mb-4">
@@ -22,9 +22,9 @@
                 <span *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid" class="text-danger">please enter password</span>
                
               </div>
-              <span class="text-danger small mb-5" *ngIf="loginSuccess">Email Id or password is Inccorect please try again</span>
+              <span class="text-danger small mb-5" *ngIf="loginFail">Email Id or password is Inccorect please try again</span>
               <div class="pt-1 mb-4">
-                <button class="btn btn-success btn-lg btn-block" type="button" (click)="loginUser()" >Login</button>
+                <button class="btn btn-success btn-lg btn-block" type="button" (click)="_loginUser()"  [disabled]="loginForm.invalid">Login</button>
                 
               </div>
   

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartdataservicesService } from 'src/app/services/cartdataservices.service';
+
 import { UserServicesService } from 'src/app/services/user-services.service';
 
 
@@ -13,54 +15,50 @@ export class MycartComponent {
   prodQYT!: number;
   cartData:any[] = [];
   currentUserCartData: any[] = [];
-  groupedProduct :any[]=[]
+
   noData: boolean = false
   userData!: any;
   subTotal!: any;
-  deliveryCharge!: number;
+  Taxs!: number;
   totalCartAmount: number = 0;
   OrderData!: any;
+  discount!:number
 
-  constructor(private cartService:CartdataservicesService,private userService:UserServicesService) { }
+  constructor(private cartService:CartdataservicesService,private userService:UserServicesService,private router:Router) { }
  
   ngOnInit() {
     // get the user data from the local storage 
-    const uData = this.userService._getLoggedInUserData();
-    if (uData) {
-      this.userData = JSON.parse(uData);
-    }
+  this._getUserData()
     // get the cart data from the localstorage 
+   this.getCartData()
+    this._totalAmount()  
+  }
+
+  // get cart data 
+  getCartData() { 
     const data = this.cartService._getStoreCartData()
+    console.log();
+    
     if (data) {
- 
-       this.cartData = JSON.parse(data);
-     
-      
+      this.cartData = JSON.parse(data);
       this.currentUserCartData= this.cartData.filter((item:any) => {
-        if (item.userID == this.userData[0].id) {
+        if (item.userID == this.userData.addresses[0].customer_id) {
          return item
        }
-      })
- 
-      
-  this._groping()
-      
-      
+      })  
+     console.log(this.currentUserCartData);
+     
     } else {
       this.noData = true
-      console.log("no data ");
-      
+      console.log("no data ");  
     }
     this._totalAmount()
-
-    
   }
   _addProd(pid: number) {
-    debugger
+   
     this.cartData.forEach((product) => {
-      if (product.productID == pid && product.userID == this.userData[0].id) {
-        product.prodQYT++
-        product.prodTotalPrice = product.prodQYT*product.prodPrice        
+      if (product.product_id == pid && product.userID == this.userData.addresses[0].customer_id) {       product.qty++
+        product.prodTotalPrice = product.qty * product.product_amount  
       }
     })
     this._totalAmount()
@@ -69,56 +67,68 @@ export class MycartComponent {
   _removeProd(pid: number) {
 
     this.cartData.forEach((product) => {
-      if (product.productID == pid && product.userID == this.userData[0].id && product.prodQYT>0) {
-        product.prodQYT--
-        product.prodTotalPrice = product.prodQYT*product.prodPrice        
+      if (product.product_id == pid && product.userID == this.userData.addresses[0].customer_id && product.qty>1)   {
+        product.qty--
+        product.prodTotalPrice = product.qty * product.product_amount      
       }
     })
     
-    
-   
     this._totalAmount()
+   
   }
   _totalAmount() {
     
-    let total:number=0;
+    let total: number = 0;
+    let discount: number = 0;
     this.currentUserCartData.forEach((item) => {
+      discount+= item.discount_amount
       total+=item.prodTotalPrice
-    
     })
+    this.discount=discount
     this.subTotal = total;
-    this.deliveryCharge = this.subTotal * 0.05;
-    this.totalCartAmount = this.subTotal + this.deliveryCharge
+    this.Taxs = this.subTotal * 0.05;
+    this.totalCartAmount = this.subTotal + this.Taxs - this.discount
    
   
   }
   _deleteProduct(id: any) {
-    
-    this.currentUserCartData = this.currentUserCartData.filter((product) => product.productID !== id);
-    this._groping()
-    this._totalAmount()
-  }
-  
-
-  // operation on currenuserCartData for getting expected op
-  _groping() {
-   
-    this.groupedProduct = this.currentUserCartData.reduce((acc, curr) => {
-      const existing = acc.find((item:any) => item.category === curr.category);
-      if (existing) {
-        existing.products.push(curr);
-      } else {
-        acc.push({ category: curr.category, products: [curr] });
+    for (let item = 0; item < this.cartData.length; item++){
+      if (this.cartData[item].product_id == id && this.cartData[item].userID == this.userData.addresses[0].customer_id) { 
+        this.cartData.splice(item, 1)
+        this.cartService._updateCartData(this.cartData)
+        
+        this.getCartData()
+       
       }
-      return acc;
-    }, []);
-   
+    }
+  
   }
   
-  _checkOut() {
-  
-    const OrderData = { ...this.currentUserCartData, totalOrderAmount: this.totalCartAmount };
-    console.log(OrderData);
-}
 
+  
+ 
+  _checkOut() {
+    let removeFeilds=['userID','prodTotalPrice']
+    let orderProducts = this.currentUserCartData.map(product => {
+      const newProduct = { ...product }
+      removeFeilds.forEach(field => {
+        delete newProduct[field];
+      });
+      return newProduct;
+    })
+    console.log(orderProducts);
+    
+    const OrderData = { order_products: orderProducts, paid: this.totalCartAmount, subTotal: this.subTotal, Taxs: this.Taxs, };
+
+    localStorage.setItem('tempOrderData',JSON.stringify(OrderData))
+    this.router.navigate(['/categories/checkout'])
+
+}
+// user data methods
+  _getUserData() { 
+    const uData = sessionStorage.getItem('userData')
+    if (uData) {
+      this.userData = JSON.parse(uData);
+    }
+  }
 }

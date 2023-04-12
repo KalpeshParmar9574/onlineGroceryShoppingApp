@@ -13,30 +13,30 @@
           </tr>
         </thead>
         <tbody >
-          <ng-container *ngFor="let group of groupedProduct">
-            <tr>
-              <td [attr.colspan]="group.products.length + 5"> <strong>{{ group.category }}</strong></td>
+         
+           
+            <tr *ngFor="let product of currentUserCartData; let i = index">
+              <td>{{ product.product_name }}</td>
+              <td>{{ product.product_amount }}</td>
+              <td><button class="p-2 btn btn-outline-danger mx-1 rounded-5 "  (click)="_removeProd(product.product_id)">-</button><span class="p-2 pcount rounded-3 ">{{product.qty}}</span><button class="p-2 btn btn-outline-success mx-1 rounded-5 "  (click)="_addProd(product.product_id)">+</button></td>
+              <td>{{product.prodTotalPrice|currency}} <button class="btn btn-outline-danger mx-2" (click)="_deleteProduct(product.product_id)"><i class="bi bi-trash"></i></button></td> 
             </tr>
-            <tr *ngFor="let product of group.products">
-              <td>{{ product.ProdName }}</td>
-              <td>{{ product.prodPrice }}</td>
-              <td><button class="p-2 btn btn-outline-danger mx-1 rounded-5 "  (click)="_removeProd(product.productID)">-</button><span class="p-2 pcount rounded-3 ">{{product.prodQYT}}</span><button class="p-2 btn btn-outline-success mx-1 rounded-5 "  (click)="_addProd(product.productID)">+</button></td>
-              <td>{{product.prodTotalPrice|currency}} <button class="btn btn-outline-danger mx-2" (click)="_deleteProduct(product.productID)"><i class="bi bi-trash"></i></button></td> 
-            </tr>
-          </ng-container>
+         
      
     
         </tbody>
       </table>
-      <div class="container bill_div  rounded-2">
+      <div class="container bill_div  pt-2 rounded-2">
         <div class="row">
           <div class="col">
           <p> <strong> Sub Total</strong></p>
-          <p> <strong>Delivery Chrages</strong>  <i class="bi bi-question bg-success rounded-circle mx-2 text-light"></i></p>
+          <p><strong>Discount</strong></p>
+          <p> <strong>Taxs</strong>  <i class="bi bi-question bg-success rounded-circle mx-2 text-light"></i></p>
         </div>
         <div class="col">
           <p>{{subTotal|currency}}</p>
-          <p>{{deliveryCharge|currency}}</p>
+          <p>{{discount|currency}}</p>
+          <p>{{Taxs|currency}}</p>
         </div>
         </div>
         <div class="row">

@@ -2,6 +2,12 @@
 <!-- 
 // carousel -->
 <!--  todo:header components responsiveness  -->
+<app-apploader *ngIf="spinner; else home "></app-apploader>
+
+
+
+<ng-template #home>
+
 <div id="banner" class="carousel slide ">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#scrollLeft" data-bs-slide-to="0" class="active" aria-current="true"
@@ -43,19 +49,19 @@
         <div class="nav   d-flex " id="nav_tabs">
             <ul class="nav justify-content-inline  ">
                 <li class="nav-item">
-                    <a class="nav-link active" [routerLink]="['/./categories/category', 'all']" aria-current="page">All Categories </a>
+                    <a class="nav-link active" [routerLink]="['././categories/category', 'all']" aria-current="page">All Categories </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/categories','vegitables']" routerLinkActive="true"  href="#">Vegitable</a>
+                    <a class="nav-link" [routerLink]="['/./categories/category','2']" routerLinkActive="true"  href="#">Vegitable</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/categories','fruits']" routerLinkActive="Fruit" >Fruit</a>
+                    <a class="nav-link" [routerLink]="['/./categories/category','3']" routerLinkActive="Fruit" >Fruit</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " [routerLink]="['/categories','coffeetea']" routerLinkActive="true" >Coffee & Tea</a>
+                    <a class="nav-link " [routerLink]="['/./categories/category','4']" routerLinkActive="true" >Coffee & Tea</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " [routerLink]="['/categories','meat']" routerLinkActive="true" >Meat</a>
+                    <a class="nav-link " [routerLink]="['/./categories/category ','5']" routerLinkActive="true" >Meat</a>
                 </li>
             </ul>
         </div>
@@ -64,82 +70,19 @@
     <!-- // cards -->
 
     <div class="card_container  ">
-        <div class="card">
-            <div class="img">
-                <img src="../../assets/images/categories_images/peach.png" alt="">
-            </div>
-            <div class="details ">
-                <p class="" id="item_title">peach</p>
-                <small class="text-secondary" id="item">Items</small>
-            </div>
 
-        </div>
-        <!-- //02 -->
-        <div class="card">
-            <div class="img">
-                <img src="../../assets/images/categories_images/image 4.png" alt="">
-            </div>
-            <div class="details ">
-                <p class="" id="item_title">Vegitable</p>
-                <small class="text-secondary" id="item">Items</small>
-            </div>
+        <carousel>
+                <div class="card carousel-cell" *ngFor="let item of categories;" 
+                (click)="_onCategoryCardClick(item.id)">
+                 <img src="../../../assets/images/categories_images/apple.png" alt="">
+                    <div class="details ">
+                        <p class="" id="item_title">{{item.title}}</p>
+                        <small class="text-secondary" id="item">Items</small>
+                    </div>
+        
+                </div>                
+        </carousel>
 
-        </div>
-        <!-- 03 -->
-        <div class="card">
-            <div class="img">
-                <img src="../../assets/images/categories_images/apple.png" alt="">
-            </div>
-            <div class="details ">
-                <p class="" id="item_title">Apples</p>
-                <small class="text-secondary" id="item">Items</small>
-            </div>
-
-        </div>
-        <!-- 04 -->
-        <div class="card">
-            <div class="img">
-                <img src="../../assets/images/categories_images/straberry.png" alt="">
-            </div>
-            <div class="details ">
-                <p class="" id="item_title">Straberry</p>
-                <small class="text-secondary" id="item">Items</small>
-            </div>
-
-        </div>
-        <!-- 05 -->
-        <div class="card">
-            <div class="img">
-                <img src="../../assets/images/categories_images/orange.png" alt="">
-            </div>
-            <div class="details ">
-                <p class="" id="item_title">Orange</p>
-                <small class="text-secondary" id="item">Items</small>
-            </div>
-
-        </div>
-        <!-- 06 -->
-        <div class="card">
-            <div class="img">
-                <img src="../../assets/images/categories_images/patato.png" alt="">
-            </div>
-            <div class="details ">
-                <p class="" id="item_title">Patato</p>
-                <small class="text-secondary" id="item">Items</small>
-            </div>
-
-        </div>
-        <!-- 07 -->
-        <div class="card">
-            <div class="img">
-                <img src="../../assets/images/categories_images/carrot.png" alt="">
-            </div>
-            <div class="details ">
-                <p class="" id="item_title">Carrot</p>
-                <small class="text-secondary" id="item">Items</small>
-            </div>
-
-        </div>
     </div>
 
 </div>
@@ -176,8 +119,17 @@
 <!-- feature product card -->
 
 <div class="cards container">
+
+    
+    <carousel>
+        <div  id="card" class="card carousel-cell" *ngFor="let item of featureProdData;" 
+       >
+       <app-product-card  [data]=""></app-product-card>
+
+        </div>                
+</carousel>
    
-        <app-product-card [data]="featureProdData"></app-product-card>
+      
       
      
    
@@ -511,21 +463,21 @@
 
 <div class="servces_section container">
     <div class="row">
-        <div class="col services_card">
+        <div class="col col-sm-3 services_card">
             <img src="../../assets/icon/best price logo.png" alt="" class="services_logo">
             <div class="services_card_details">
             <p class="services_title">Best Price & Deals</p>
             <p class="services_desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
             </div>
         </div>
-        <div class="col services_card">
+        <div class="col col-sm-3 services_card">
             <img src="../../assets/icon/free delivery logo.png" alt="" class="services_logo">
             <div class="services_card_details">
             <p class="services_title">Best Price & Deals</p>
             <p class="services_desc">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
             </div>
         </div>
-        <div class="col  services_card">
+        <div class="col col-sm-3  services_card">
             <img src="../../assets/icon/refundable logo.png" alt="" class="services_logo">
             <div class="services_card_details" style="width:50%">
             <p class="services_title">Best Price & Deals</p>
@@ -534,6 +486,6 @@
         </div>
     </div>
 
-</div>
 
-<!-- <app-footer></app-footer> -->
+</div>
+</ng-template>

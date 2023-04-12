@@ -10,44 +10,53 @@ import { ProductdataService } from 'src/app/services/productdata.service';
 })
 export class CategoryComponent implements OnInit {
   productsData: any[]=[];
-  category_prod_data: any[]=[];
+  category_prod_data!:any;
   type!: any;
-  constructor(private route: ActivatedRoute, private prodData: ProductdataService) { 
-        
-    
+  constructor(private route: ActivatedRoute, private productService: ProductdataService) { 
     this.type = this.route.snapshot.paramMap.get('type');
+   
   }
 
-  ngOnInit() {
-    this.prodData.getData().subscribe((data) => {
-    
-      this.productsData = Object.values(data) 
-     
-      
-    }, (error) => {
-      console.log("error");
-      
-    }
-    );
-   
- 
+  ngOnInit() {  this._getProducts() }
+  
+  _getProducts() {
+  
     if (this.type !== 'all') {
-
-      
-
-     console.log(  this._filter());
-    
-      
-    } else {
-      this.category_prod_data = this.productsData;
-      
+      this.productService._getProductsByCategories(this.type).subscribe((res) => {
+        console.log(res);
+        this.category_prod_data = res.data
+       
+        if (this.category_prod_data) {
+          this.productsData = this.category_prod_data.map((item:any) => {
+            return item.product
+          })
+          console.log(this.productsData);
+          
+        }
+        
+       
+      }, (error) => {
+        console.log(error);
+        
+      })
+     
+    }
+    else {
+          this.productService._getAllProducts().subscribe((res) => {
+            this.productsData = res.data
+            console.log(this.productsData);
+            
+      }, (error) => {
+        console.log(error);
+        
+      })
+    }
   }
   
-  }
-
-  _filter(): any {
     
-    return
+    
   }
 
-}
+  
+
+

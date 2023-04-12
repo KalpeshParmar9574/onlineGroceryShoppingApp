@@ -55,7 +55,9 @@
             margin: 5px;
 
             img {
-                width: 100%;
+              width: 50%;
+              height: 50%;
+              margin-left: 20%;
 
             }
 
@@ -70,12 +72,7 @@
                 font-size: 14px;
                 line-height: 18px;
 
-                /* identical to box height */
-
-
-                /* Grey */
-
-                color: #ADADAD;
+                
             }
 
             #item_title {
@@ -157,4 +154,8 @@ width: 50%;
     #item_title{
         font-size: 10px;
     }
+}
+
+carousel{
+    z-index: 0;
 }

@@ -19,8 +19,8 @@ export class LogoutComponent {
     
   }
   _logOut() {
-    this.userService._logOutUser()
-    this.router.navigate(['home'])
+    // this.userService._logOutUser()
+    // this.router.navigate(['home'])
   }
 
 }

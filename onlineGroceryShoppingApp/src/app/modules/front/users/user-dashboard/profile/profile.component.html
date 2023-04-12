@@ -1,36 +1,39 @@
-<div class="container" id="main_container">
+<div class="container w-100" id="main_container">
 
 <form [formGroup]="userDataForm" class="row" (ngSubmit)="_updateUserData()">
-    <div class="col col-md-4 ">
+    <div class="col col-sm-3 ">
       <label class="form-label" for="firstName">First Name</label>
-      <input type="text" id="firstName" class="form-control form-control-lg" formControlName="firstName"
+      <input type="text" id="firstName" class="form-control form-control" formControlName="first_name"
          />
-         <span *ngIf="userDataForm.get('firstName')?.invalid" class="text-danger">pleae enter valid first name</span>
-      <label class="form-label" for="email" >Email</label>
-      <input type="email" id="email" class="form-control form-control-lg" formControlName="email" />
-      <span *ngIf="userDataForm.get('email')?.invalid" class="text-danger">pleae enter valid email </span>
+         <span *ngIf=" userDataForm.get('first_name')?.touched && userDataForm.get('first_name')?.invalid" class="text-danger"> <small>pleae enter valid first name</small> </span>
+         <label class="form-label" for="form3Example1n" >Last name</label>
+         <input type="text" id="form3Example1n" class="form-control  form-control" formControlName="last_name"/>
+         <span *ngIf=" userDataForm.get('last_name')?.touched && userDataForm.get('last_name')?.invalid" class="text-danger"><small>pleae enter valid last name</small> </span>
+
       <label class="form-label" for="altEmail">Alternate Email</label>
-      <input type="email" id="altEmail" class="form-control form-control-lg" />
-      <span *ngIf="userDataForm.get('altEmail')?.invalid" class="text-danger">pleae enter valid Alternate Email</span>
+      <input type="email" id="altEmail" class="form-control form-control"  formControlName="secondary_email"/>
+      <span *ngIf="  userDataForm.get('secondary_email')?.touched&& userDataForm.get('secondary_email')?.invalid" class="text-danger"> <small> pleae enter valid Alternate Email</small> </span>
+  
+
+    </div>
+
+    <div class="col col-sm-3 ">
+    
+     
       <label class="form-label" for="form3Example9" >DOB</label>
-      <input type="date" id="form3Example9" class="form-control form-control-lg" formControlName="dob" />
-      <span *ngIf="userDataForm.get('dob')?.invalid" class="text-danger">pleae enter valid Date Of Birth</span>
+      <input type="date" id="form3Example9" class="form-control form-control" formControlName="date_of_birth" />
+      <span *ngIf=" userDataForm.get('date_of_birth')?.invalid && userDataForm.get('date_of_birth')?.touched" class="text-danger"> <small>pleae enter valid Date Of Birth</small> </span>
 
-    </div>
-
-    <div class="col col-md-4 ">
-      <label class="form-label" for="form3Example1n" >Last name</label>
-      <input type="text" id="form3Example1n" class="form-control  form-control-lg" formControlName="lastName"/>
-      <span *ngIf="userDataForm.get('lastName')?.invalid" class="text-danger">pleae enter valid last name</span>
-      <label class="form-label" for="form3Example99" >Contact No.</label>
-      <input type="tel" id="form3Example99" class="form-control  form-control-lg" formControlName="mobileNo" />
-      <span *ngIf="userDataForm.get('mobileNo')?.invalid" class="text-danger">pleae enter valid contact Number</span>
       <label class="form-label" for="form3Example99">Alerternate Contact No.</label>
-      <input type="tel" id="form3Example99" class="form-control form-control-lg " />
+      <input type="" id="form3Example99" class="form-control form-control" 
+       formControlName="secondary_mobile_number" />
+       <span *ngIf=" userDataForm.get('secondary_mobile_number')?.touched && userDataForm.get('secondary_mobile_number')?.invalid" class="text-danger"> <small>pleae enter valid Alternate contact Number</small> </span>
+
+       
     </div>
-    <span *ngIf="userDataForm.get('altMobileNo')?.invalid" class="text-danger">pleae enter valid Alternate contact Number</span>
-    <div class="col col-md-4 col_btn">
-      <button type="submit" id="btn_save" class="btn btn-success  px-4" >Save</button>
+  
+    <div class="col col-sm-3 col_btn">
+      <button type="submit" id="btn_save" class="btn btn-success  px-4"  [disabled]="userDataForm.invalid" >Save</button>
     </div>
   </form>
   </div>

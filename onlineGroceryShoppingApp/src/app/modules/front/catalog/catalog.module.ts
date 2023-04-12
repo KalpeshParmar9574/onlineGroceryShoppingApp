@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { SuccessComponent } from './success/success.component';
 
+
 // import { ProductCartComponent } from './my-cart/product-cart.component';
 // import {}
 
@@ -24,6 +25,8 @@ import { SuccessComponent } from './success/success.component';
     MycartComponent,
     CheckoutComponent,
     SuccessComponent,
+  
+
  
    
   ],
@@ -31,7 +34,9 @@ import { SuccessComponent } from './success/success.component';
     CommonModule,
     SharedModule,
     CatalogRoutingModule,
-    FormsModule
+    FormsModule,
+  
+
     
     
   ],
@@ -39,7 +44,8 @@ import { SuccessComponent } from './success/success.component';
     ProductDetailsComponent,
     ProductListComponent,
     CategoryComponent,
-    ProductCardComponent
+    ProductCardComponent,
+ 
   ]
 })
 export class CatalogModule { }

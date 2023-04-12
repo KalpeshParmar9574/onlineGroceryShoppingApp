@@ -1,6 +1,12 @@
 .add_div{
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.700);
+    p{
+    line-height: 20px;
+    }
 }
 #btn_delete{
     height: 10%;    
+}
+.add-text{
+    height: 250px;
 }
